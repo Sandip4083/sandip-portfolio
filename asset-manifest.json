@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/sandip-portfolio/static/css/main.bf538fe7.css",
+    "main.js": "/sandip-portfolio/static/js/main.c97f80e9.js",
+    "static/media/sandip.jpg": "/sandip-portfolio/static/media/sandip.1bc412aa8406db6c8858.jpg",
+    "index.html": "/sandip-portfolio/index.html",
+    "main.bf538fe7.css.map": "/sandip-portfolio/static/css/main.bf538fe7.css.map",
+    "main.c97f80e9.js.map": "/sandip-portfolio/static/js/main.c97f80e9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bf538fe7.css",
+    "static/js/main.c97f80e9.js"
+  ]
+}
