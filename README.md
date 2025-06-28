@@ -4,10 +4,10 @@ Welcome to my portfolio! This project showcases my skills, projects, and experie
 
 ## Some Images:
 <img width="450px;" src="https://github.com/user-attachments/assets/4f6e548d-b875-4b36-8166-ab8bea1cd202"/>
-<img width="450px;" src="https://github.com/user-attachments/assets/806aa360-df4c-4439-99be-5a3f97bb719d"/>
-<img width="450px;" src="https://github.com/user-attachments/assets/a31363cf-d0c9-44dd-8bff-27b05945208c"/>
-<img width="450px;" src="https://github.com/user-attachments/assets/15370480-8fbe-427c-9c67-f6af6b41cda8"/>
-<img width="450px;" src="https://github.com/user-attachments/assets/fbff2be4-afb5-49d3-aaff-4bdf68d0ff5a"/>
+<img width="450px;" src="https://github.com/user-attachments/assets/daa462b0-e408-4d23-a4d0-30222576e1b9"/>
+<img width="450px;" src="https://github.com/user-attachments/assets/26ededca-0c4b-47a7-8d5d-a240bd495120"/>
+<img width="450px;" src="https://github.com/user-attachments/assets/fce2ed35-ac23-49d4-9e87-63c99b522c5f"/>
+<img width="450px;" src="https://github.com/user-attachments/assets/18dfbc75-34de-4b90-968d-055f13cde046"/>
 
 ## Table of Contents
 - [Introduction](#introduction)
