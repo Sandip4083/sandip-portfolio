@@ -198,7 +198,7 @@ export const projects = [
     tags: ["HTML5", "CSS3", "JavaScript"],
     category: "web app",
     //github: "https://sandip4083.github.io/kids_learning_portal/", // Replace with your actual link
-    webapp: "https://kids-learning-portal.netlify.app/", // Add live link if any
+    webapp: "https://sandip4083.github.io/kids_learning_portal/", // Add live link if any
   },
   {
     id: 101,
