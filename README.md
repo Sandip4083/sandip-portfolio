@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # My Portfolio
 Welcome to my portfolio! This project showcases my skills, projects, and experiences as a web developer.
 
@@ -57,3 +58,7 @@ Contributions are welcome! If you'd like to contribute to My Portfolio, please f
 5. Open a pull request.
 
 
+=======
+# sandip-portfolio
+>>>>>>> 162f6802476e745580f06a454c2b9fad4f5b2386
+"# sandip-portfolio" 
