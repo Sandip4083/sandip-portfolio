@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 
 const Document = styled.img`
@@ -35,8 +34,8 @@ text-overflow: ellipsis;
 
 const Card = styled.div`
     width: 650px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    border-radius: 16px;
+    background-color: ${({ theme }) => theme.card};
     padding: 12px 16px;
     justify-content: space-between;
     position: relative;
@@ -45,10 +44,19 @@ const Card = styled.div`
     flex-direction: column;
     gap: 12px;
     transition: all 0.3s ease-in-out;
-    &:hover{
-        box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
-        transform: translateY(-5px);
+
+    /* Neon Border */
+    border: 2px solid ${({ theme }) => theme.primary};
+    box-shadow: 0 0 12px ${({ theme }) => theme.primary}55,
+                0 0 24px ${({ theme }) => theme.primary}33;
+
+    &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 0 18px ${({ theme }) => theme.primary},
+                    0 0 36px ${({ theme }) => theme.primary}aa;
+        filter: brightness(1.05);
     }
+
     @media only screen and (max-width: 768px){
         padding: 10px;
         gap: 8px;
@@ -62,12 +70,9 @@ const Card = styled.div`
     &:hover ${Span}{
         overflow: visible;
         -webkit-line-clamp: unset;
-
     }
+`;
 
-    border: 0.1px solid #306EE8;
-    box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
-`
 
 const Top = styled.div`
     width: 100%;

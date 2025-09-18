@@ -1,18 +1,19 @@
-import styled from 'styled-components';
-import _default from '../../themes/default';
+import styled from "styled-components";
 
-
+// Social media icons wrapper
 export const SocialMediaIcons = styled.div`
   display: flex;
   margin-top: 1rem;
 `;
 
+// Single social media icon
 export const SocialMediaIcon = styled.a`
   display: inline-block;
   margin: 0 1rem;
   font-size: 1.5rem;
   color: ${({ theme }) => theme.text_primary};
   transition: color 0.2s ease-in-out;
+
   &:hover {
     color: ${({ theme }) => theme.primary};
   }

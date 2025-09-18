@@ -3,11 +3,8 @@
 Welcome to my portfolio! This project showcases my skills, projects, and experiences as a web developer.
 
 ## Some Images:
-<img width="450px;" src="https://github.com/user-attachments/assets/4f6e548d-b875-4b36-8166-ab8bea1cd202"/>
-<img width="450px;" src="https://github.com/user-attachments/assets/daa462b0-e408-4d23-a4d0-30222576e1b9"/>
-<img width="450px;" src="https://github.com/user-attachments/assets/26ededca-0c4b-47a7-8d5d-a240bd495120"/>
-<img width="450px;" src="https://github.com/user-attachments/assets/fce2ed35-ac23-49d4-9e87-63c99b522c5f"/>
-<img width="450px;" src="https://github.com/user-attachments/assets/18dfbc75-34de-4b90-968d-055f13cde046"/>
+<![alt text](image.png)>
+
 
 ## Table of Contents
 - [Introduction](#introduction)

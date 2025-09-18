@@ -1,6 +1,4 @@
-import React from 'react'
-import styled from 'styled-components'
-
+import styled from 'styled-components';
 
 const Button = styled.button`
     display: none;
@@ -15,28 +13,38 @@ const Button = styled.button`
     cursor: pointer;
     transition: all 0.8s ease-in-out;
 `
+
 const Card = styled.div`
     width: 330px;
     height: 490px;
     background-color: ${({ theme }) => theme.card};
     cursor: pointer;
-    border-radius: 10px;
-    box-shadow: 0 0 12px 4px rgba(0,0,0,0.4);
+    border-radius: 16px;
+
+    /* Neon Border */
+    border: 2px solid ${({ theme }) => theme.primary};
+    box-shadow: 0 0 12px ${({ theme }) => theme.primary}88,
+                0 0 24px ${({ theme }) => theme.primary}55;
+
     overflow: hidden;
     padding: 26px 20px;
     display: flex;
     flex-direction: column;
     gap: 14px;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.4s ease-in-out;
+
     &:hover {
         transform: translateY(-10px);
-        box-shadow: 0 0 50px 4px rgba(0,0,0,0.6);
+        box-shadow: 0 0 20px ${({ theme }) => theme.primary},
+                    0 0 40px ${({ theme }) => theme.primary}aa;
         filter: brightness(1.1);
     }
+
     &:hover ${Button} {
         display: block;
     }
-`
+`;
+
 
 const Image = styled.img`
     width: 100%;
@@ -59,7 +67,7 @@ const Tag = styled.span`
     font-size: 12px;
     font-weight: 400;
     color: ${({ theme }) => theme.primary};
-    background-color: ${({ theme }) => theme.primary + 15};
+    background-color: ${({ theme }) => `${theme.primary}15`};
     padding: 2px 8px;
     border-radius: 10px;
 `
@@ -71,6 +79,7 @@ const Details = styled.div`
     gap: 0px;
     padding: 0px 2px;
 `
+
 const Title = styled.div`
     font-size: 20px;
     font-weight: 600;
@@ -80,7 +89,6 @@ const Title = styled.div`
     max-width: 100%;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    overflow: hidden;
     text-overflow: ellipsis;
 `
 
@@ -93,7 +101,6 @@ const Date = styled.div`
         font-size: 10px;
     }
 `
-
 
 const Description = styled.div`
     font-weight: 400;
@@ -112,6 +119,7 @@ const Members = styled.div`
     align-items: center;
     padding-left: 10px;
 `
+
 const Avatar = styled.img`
     width: 38px;
     height: 38px;
@@ -122,13 +130,13 @@ const Avatar = styled.img`
     border: 3px solid ${({ theme }) => theme.card};
 `
 
-const ProjectCards = ({project,setOpenModal}) => {
+const ProjectCards = ({ project, setOpenModal }) => {
     return (
-        <Card onClick={() => setOpenModal({state: true, project: project})}>
-            <Image src={project.image}/>
+        <Card onClick={() => setOpenModal({ state: true, project })}>
+            <Image src={project.image} alt={project.title} />
             <Tags>
                 {project.tags?.map((tag, index) => (
-                <Tag>{tag}</Tag>
+                    <Tag key={index}>{tag}</Tag>
                 ))}
             </Tags>
             <Details>
@@ -137,8 +145,8 @@ const ProjectCards = ({project,setOpenModal}) => {
                 <Description>{project.description}</Description>
             </Details>
             <Members>
-                {project.member?.map((member) => (
-                    <Avatar src={member.img}/>
+                {project.member?.map((member, index) => (
+                    <Avatar key={index} src={member.img} alt="Project member" />
                 ))}
             </Members>
             {/* <Button>View Project</Button> */}
