@@ -172,7 +172,7 @@ export const projects = [
     description:
       "Built a Python-based Snake Game with Streamlit, featuring AI pathfinding (BFS, DFS, A, Greedy) and real-time score tracking.",
     image:
-      "https://private-user-images.githubusercontent.com/121121950/491288231-fc5f25eb-cb77-4b16-9f71-2e7f8d7443eb.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTgyMjk0MzMsIm5iZiI6MTc1ODIyOTEzMywicGF0aCI6Ii8xMjExMjE5NTAvNDkxMjg4MjMxLWZjNWYyNWViLWNiNzctNGIxNi05ZjcxLTJlN2Y4ZDc0NDNlYi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwOTE4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDkxOFQyMDU4NTNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0xOTFhZjUzZjVlNTk4ZGNlZDYwZGJhNjI5OTJjNWY3MzlmMThlMGQ4N2MxYTYyNWQ1MTU3MjUxNDRlN2EyYmU2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.reLZ0pqu9OD4O0wpcxlYzLtCuePqqmb5El_B_NpP5Bk",
+      "https://github.com/user-attachments/assets/fc5f25eb-cb77-4b16-9f71-2e7f8d7443eb",
     tags: ["Python", "Streamlit", "AI", "Pathfinding", "Game Development"],
     category: "AI Game",
     github: "https://snake-ai-w4ta.onrender.com",
