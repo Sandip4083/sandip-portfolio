@@ -8,32 +8,10 @@ const Container = styled.div`
   align-items: center;
   position: relative;
   z-index: 1;
-  padding: 60px 20px 100px 20px;
-
-  /* Animated mesh background */
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(
-        circle at 20% 30%,
-        rgba(0, 245, 255, 0.1) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at 80% 70%,
-        rgba(255, 0, 110, 0.08) 0%,
-        transparent 50%
-      );
-    pointer-events: none;
-    z-index: 0;
-  }
+  padding: 40px 20px 80px 20px;
 
   @media (max-width: 960px) {
-    padding: 40px 16px 80px 16px;
+    padding: 30px 16px 60px 16px;
   }
 `;
 
@@ -53,29 +31,10 @@ const Wrapper = styled.div`
   }
 `;
 
-// 🔥 3D Holographic Title with perspective
-const float = keyframes`
-  0%, 100% { 
-    transform: translateY(0px) perspective(1000px) rotateX(0deg); 
-  }
-  50% { 
-    transform: translateY(-12px) perspective(1000px) rotateX(3deg); 
-  }
-`;
-
-const holographicShine = keyframes`
-  0% { 
-    background-position: 0% 50%;
-    filter: hue-rotate(0deg);
-  }
-  50% { 
-    background-position: 100% 50%;
-    filter: hue-rotate(20deg);
-  }
-  100% { 
-    background-position: 0% 50%;
-    filter: hue-rotate(0deg);
-  }
+const gradientText = keyframes`
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 `;
 
 export const Title = styled.div`
@@ -84,40 +43,12 @@ export const Title = styled.div`
   font-weight: 800;
   margin-top: 20px;
   letter-spacing: 3px;
-  position: relative;
-
-  background: linear-gradient(
-    135deg,
-    #00f5ff 0%,
-    #ff006e 25%,
-    #b794f6 50%,
-    #00f5ff 75%,
-    #ff006e 100%
-  );
-  background-size: 300% 300%;
+  background: linear-gradient(135deg, #00f5ff 0%, #ff006e 50%, #b794f6 100%);
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: ${holographicShine} 5s ease infinite,
-    ${float} 3.5s ease-in-out infinite;
-
-  /* 3D depth */
-  filter: drop-shadow(0 0 30px rgba(0, 245, 255, 0.5))
-    drop-shadow(0 0 60px rgba(255, 0, 110, 0.3));
-
-  /* Glowing underline */
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: -18px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, #00f5ff, transparent);
-    border-radius: 2px;
-    box-shadow: 0 0 20px #00f5ff;
-  }
+  animation: ${gradientText} 4s ease infinite;
 
   @media (max-width: 768px) {
     margin-top: 12px;
@@ -132,7 +63,7 @@ export const Desc = styled.div`
   max-width: 600px;
   color: ${({ theme }) => theme.text_secondary};
   line-height: 1.6;
-  margin-top: 25px;
+  margin-top: 15px;
 
   @media (max-width: 768px) {
     font-size: 16px;
@@ -143,96 +74,24 @@ const SkillsContainer = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  margin-top: 40px;
-  gap: 30px;
+  margin-top: 30px;
+  gap: 20px;
   justify-content: center;
-`;
-
-// 🔥 Futuristic Skill Card with animated border
-const borderGlow = keyframes`
-  0%, 100% {
-    border-color: rgba(0, 245, 255, 0.5);
-    box-shadow: 
-      0 0 20px rgba(0, 245, 255, 0.4),
-      0 0 40px rgba(0, 245, 255, 0.2),
-      inset 0 0 30px rgba(0, 245, 255, 0.05);
-  }
-  50% {
-    border-color: rgba(255, 0, 110, 0.5);
-    box-shadow: 
-      0 0 30px rgba(255, 0, 110, 0.5),
-      0 0 60px rgba(255, 0, 110, 0.3),
-      inset 0 0 40px rgba(255, 0, 110, 0.08);
-  }
-`;
-
-const hoverFloat = keyframes`
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
 `;
 
 const Skill = styled.div`
   width: 100%;
-  max-width: 500px;
+  max-width: 450px;
   background: linear-gradient(
     135deg,
     rgba(15, 14, 23, 0.95) 0%,
     rgba(23, 23, 33, 0.9) 100%
   );
-  backdrop-filter: blur(20px) saturate(150%);
+  backdrop-filter: blur(20px);
   border-radius: 20px;
-  padding: 24px 40px;
-  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  position: relative;
-  overflow: hidden;
-
-  /* Animated neon border */
-  border: 2px solid rgba(0, 245, 255, 0.5);
-  box-shadow: 0 0 20px rgba(0, 245, 255, 0.4), 0 0 40px rgba(0, 245, 255, 0.2),
-    inset 0 0 30px rgba(0, 245, 255, 0.05);
-  animation: ${borderGlow} 4s ease-in-out infinite;
-
-  /* Corner accents */
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    border: 3px solid;
-    transition: all 0.4s ease;
-  }
-
-  &::before {
-    top: -2px;
-    left: -2px;
-    border-color: transparent;
-    border-top-color: #00f5ff;
-    border-left-color: #00f5ff;
-    border-radius: 20px 0 0 0;
-  }
-
-  &::after {
-    bottom: -2px;
-    right: -2px;
-    border-color: transparent;
-    border-bottom-color: #ff006e;
-    border-right-color: #ff006e;
-    border-radius: 0 0 20px 0;
-  }
-
-  &:hover {
-    box-shadow: 0 0 30px rgba(0, 245, 255, 0.6), 0 0 60px rgba(255, 0, 110, 0.4),
-      inset 0 0 50px rgba(0, 245, 255, 0.1);
-    transform: translateY(-8px) scale(1.02);
-    animation: ${hoverFloat} 1.5s ease-in-out infinite;
-  }
-
-  &:hover::before,
-  &:hover::after {
-    width: 120px;
-    height: 120px;
-  }
+  padding: 20px 35px;
+  border: 2px solid rgba(0, 245, 255, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 245, 255, 0.2);
 
   @media (max-width: 768px) {
     max-width: 400px;
@@ -245,83 +104,42 @@ const Skill = styled.div`
   }
 `;
 
-// 🔥 Gradient title with glow
-const titlePulse = keyframes`
-  0%, 100% {
-    text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
-  }
-  50% {
-    text-shadow: 0 0 20px rgba(0, 245, 255, 0.8);
-  }
-`;
-
 const SkillTitle = styled.h2`
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
   background: linear-gradient(135deg, #00f5ff, #ff006e);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   text-align: center;
-  animation: ${titlePulse} 2s ease-in-out infinite;
 `;
 
 const SkillList = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 14px;
-  margin-bottom: 20px;
+  gap: 12px;
+  margin-bottom: 0;
 `;
 
-// 🔥 Skill item with hover effects
 const SkillItem = styled.div`
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   color: ${({ theme }) => theme.text_primary};
   background: rgba(0, 245, 255, 0.08);
   border: 2px solid rgba(0, 245, 255, 0.3);
   border-radius: 12px;
-  padding: 12px 18px;
+  padding: 10px 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-
-  /* Shine effect */
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    transition: left 0.5s ease;
-  }
-
-  &:hover::before {
-    left: 100%;
-  }
-
-  &:hover {
-    background: rgba(0, 245, 255, 0.15);
-    border-color: #00f5ff;
-    box-shadow: 0 0 15px rgba(0, 245, 255, 0.4);
-  }
+  gap: 8px;
+  cursor: default;
 
   @media (max-width: 768px) {
     font-size: 14px;
-    padding: 10px 14px;
+    padding: 9px 14px;
   }
 
   @media (max-width: 500px) {
@@ -330,20 +148,13 @@ const SkillItem = styled.div`
   }
 `;
 
-// 🔥 Glowing skill icon
 const SkillImage = styled.img`
-  width: 28px;
-  height: 28px;
-  transition: all 0.3s ease;
-  filter: drop-shadow(0 0 8px rgba(0, 245, 255, 0.5));
-
-  ${SkillItem}:hover & {
-    filter: drop-shadow(0 0 15px rgba(0, 245, 255, 0.8));
-  }
+  width: 24px;
+  height: 24px;
 
   @media (max-width: 768px) {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
   }
 `;
 

@@ -18,7 +18,6 @@ const FooterContainer = styled.div`
   position: relative;
   overflow: hidden;
 
-  /* Animated gradient overlay */
   &::before {
     content: "";
     position: absolute;
@@ -34,25 +33,6 @@ const FooterContainer = styled.div`
       #b794f6,
       transparent
     );
-    box-shadow: 0 0 20px #00f5ff;
-  }
-
-  /* Radial glow */
-  &::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 200px;
-    background: radial-gradient(
-      circle,
-      rgba(0, 245, 255, 0.08) 0%,
-      transparent 70%
-    );
-    filter: blur(40px);
-    pointer-events: none;
   }
 `;
 
@@ -69,14 +49,10 @@ const FooterWrapper = styled.footer`
   z-index: 1;
 `;
 
-// 🔥 Gradient animated logo
-const shimmer = keyframes`
-  0% { 
-    background-position: -200% center;
-  }
-  100% { 
-    background-position: 200% center;
-  }
+const gradientText = keyframes`
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 `;
 
 const Logo = styled.h2`
@@ -87,8 +63,7 @@ const Logo = styled.h2`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: ${shimmer} 3s linear infinite;
-  text-shadow: 0 0 30px rgba(0, 245, 255, 0.3);
+  animation: ${gradientText} 3s ease infinite;
   letter-spacing: 1px;
 
   @media (max-width: 768px) {
@@ -111,7 +86,6 @@ const Nav = styled.nav`
   }
 `;
 
-// 🔥 Futuristic nav links with underline animation
 const NavLink = styled.a`
   color: ${({ theme }) => theme.text_primary};
   text-decoration: none;
@@ -120,7 +94,6 @@ const NavLink = styled.a`
   transition: all 0.3s ease;
   position: relative;
 
-  /* Animated underline */
   &::after {
     content: "";
     position: absolute;
@@ -131,12 +104,11 @@ const NavLink = styled.a`
     background: linear-gradient(90deg, #00f5ff, #ff006e);
     transition: all 0.3s ease;
     transform: translateX(-50%);
-    box-shadow: 0 0 10px #00f5ff;
   }
 
   &:hover {
     color: ${({ theme }) => theme.primary};
-    transform: translateY(-3px);
+    transform: translateY(-2px);
   }
 
   &:hover::after {
@@ -158,21 +130,6 @@ const SocialMediaIcons = styled.div`
   }
 `;
 
-// 🔥 Glowing social media icons with rotation
-const iconGlow = keyframes`
-  0%, 100% {
-    box-shadow: 0 0 10px rgba(0, 245, 255, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 25px rgba(0, 245, 255, 0.8);
-  }
-`;
-
-const iconFloat = keyframes`
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-`;
-
 const SocialMediaIcon = styled.a`
   display: inline-flex;
   align-items: center;
@@ -184,38 +141,13 @@ const SocialMediaIcon = styled.a`
   background: rgba(0, 245, 255, 0.08);
   border: 2px solid rgba(0, 245, 255, 0.3);
   border-radius: 50%;
-  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  position: relative;
-  overflow: hidden;
-
-  /* Shine effect */
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.3),
-      transparent
-    );
-    transition: left 0.5s ease;
-  }
-
-  &:hover::before {
-    left: 100%;
-  }
+  transition: all 0.3s ease;
 
   &:hover {
     color: ${({ theme }) => theme.primary};
     background: rgba(0, 245, 255, 0.15);
     border-color: ${({ theme }) => theme.primary};
-    transform: scale(1.15) rotate(10deg);
-    animation: ${iconGlow} 1s ease-in-out infinite,
-      ${iconFloat} 1s ease-in-out infinite;
+    transform: scale(1.1);
   }
 
   @media (max-width: 768px) {
@@ -225,71 +157,14 @@ const SocialMediaIcon = styled.a`
   }
 `;
 
-// 🔥 Animated copyright with pulse
-const textPulse = keyframes`
-  0%, 100% {
-    opacity: 0.7;
-  }
-  50% {
-    opacity: 1;
-  }
-`;
-
 const Copyright = styled.p`
   margin-top: 2rem;
   font-size: 1rem;
   color: ${({ theme }) => theme.text_secondary};
   text-align: center;
-  animation: ${textPulse} 3s ease-in-out infinite;
-
-  /* Subtle glow */
-  text-shadow: 0 0 10px rgba(0, 245, 255, 0.2);
 
   @media (max-width: 768px) {
     font-size: 0.9rem;
-  }
-`;
-
-// 🔥 Decorative particles
-const particleFloat = keyframes`
-  0%, 100% { 
-    transform: translateY(0px) translateX(0px);
-    opacity: 0.3;
-  }
-  50% { 
-    transform: translateY(-20px) translateX(10px);
-    opacity: 0.6;
-  }
-`;
-
-const Particle = styled.div`
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: ${({ color }) => color || "#00F5FF"};
-  border-radius: 50%;
-  opacity: 0.3;
-  box-shadow: 0 0 10px ${({ color }) => color || "#00F5FF"};
-  animation: ${particleFloat} ${(props) => props.duration || "6s"} ease-in-out
-    infinite;
-  animation-delay: ${(props) => props.delay || "0s"};
-  pointer-events: none;
-
-  &:nth-child(1) {
-    top: 20%;
-    left: 10%;
-  }
-  &:nth-child(2) {
-    top: 40%;
-    right: 15%;
-  }
-  &:nth-child(3) {
-    bottom: 30%;
-    left: 20%;
-  }
-  &:nth-child(4) {
-    bottom: 50%;
-    right: 10%;
   }
 `;
 
@@ -297,12 +172,6 @@ function Footer() {
   return (
     <FooterContainer>
       <FooterWrapper>
-        {/* Decorative particles */}
-        <Particle color="#00F5FF" duration="7s" delay="0s" />
-        <Particle color="#FF006E" duration="8s" delay="1s" />
-        <Particle color="#B794F6" duration="6s" delay="2s" />
-        <Particle color="#00F5FF" duration="9s" delay="0.5s" />
-
         <Logo>Sandip Kumar Sah</Logo>
 
         <Nav>

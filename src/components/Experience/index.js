@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const Container = styled.div`
   display: flex;
@@ -28,15 +28,29 @@ const Wrapper = styled.div`
   }
 `;
 
+const gradientText = keyframes`
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+`;
+
 const Title = styled.div`
-  font-size: 42px;
+  font-size: 52px;
   text-align: center;
-  font-weight: 600;
+  font-weight: 800;
   margin-top: 20px;
-  color: ${({ theme }) => theme.text_primary};
+  letter-spacing: 3px;
+  background: linear-gradient(135deg, #00f5ff 0%, #ff006e 50%, #b794f6 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: ${gradientText} 4s ease infinite;
+
   @media (max-width: 768px) {
     margin-top: 12px;
-    font-size: 32px;
+    font-size: 38px;
+    letter-spacing: 2px;
   }
 `;
 
@@ -51,39 +65,12 @@ const Desc = styled.div`
   }
 `;
 
-// const TimelineSection = styled.div`
-//   width: 100%;
-//   max-width: 1000px;
-//   margin-top: 10px;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-//   //   gap: 12px;
-// `;
-
 const index = () => {
   return (
     <Container id="experience">
       <Wrapper>
         <Title>Experience</Title>
         <Desc>Still processing...</Desc>
-        {/* <TimelineSection>
-                    <Timeline>
-                        {experiences.map((experience,index) => (
-                            <TimelineItem>
-                                <TimelineSeparator>
-                                    <TimelineDot variant="outlined" color="secondary" />
-                                    {index !== experiences.length - 1 && <TimelineConnector style={{ background: '#854CE6' }} />}
-                                </TimelineSeparator>
-                                <TimelineContent sx={{ py: '12px', px: 2 }}>
-                                    <ExperienceCard experience={experience}/>
-                                </TimelineContent>
-                            </TimelineItem>
-                        ))}
-                    </Timeline>
-
-                </TimelineSection> */}
       </Wrapper>
     </Container>
   );

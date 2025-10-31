@@ -58,7 +58,7 @@ const Navbar = () => {
         <ButtonContainer>
           <GitHubButton href={Bio.github} target="_blank">
             <FaGithub style={{ marginRight: "8px", fontSize: "20px" }} />
-            Github Profile
+            View Github
           </GitHubButton>
         </ButtonContainer>
 
@@ -101,7 +101,7 @@ const Navbar = () => {
               target="_blank"
             >
               <FaGithub style={{ marginRight: "8px", fontSize: "20px" }} />
-              Github Profile
+              View Github
             </GitHubButton>
           </MobileMenu>
         )}

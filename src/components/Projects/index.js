@@ -1,17 +1,7 @@
 import { useState } from "react";
-import styled, { keyframes, css } from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { projects } from "../../data/constants";
 import ProjectCard from "../Cards/ProjectCards";
-
-// 🔥 Animated gradient background
-const gradientMove = keyframes`
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-`;
 
 const Container = styled.div`
   background: linear-gradient(
@@ -20,64 +10,62 @@ const Container = styled.div`
     rgba(23, 23, 33, 1) 50%,
     rgba(15, 14, 23, 1) 100%
   );
-  background-size: 200% 200%;
-  animation: ${gradientMove} 15s ease infinite;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
   z-index: 1;
-  padding: 60px 0px 100px 0px;
+  padding: 60px 20px 100px 20px;
+  overflow: hidden;
 
-  /* Radial glow overlays */
   &::before {
     content: "";
     position: absolute;
     top: 10%;
-    left: 10%;
-    width: 500px;
-    height: 500px;
+    right: -10%;
+    width: 600px;
+    height: 600px;
     background: radial-gradient(
       circle,
-      rgba(0, 245, 255, 0.15) 0%,
+      rgba(0, 245, 255, 0.08) 0%,
       transparent 70%
     );
-    filter: blur(60px);
-    pointer-events: none;
+    border-radius: 50%;
+    filter: blur(100px);
   }
 
   &::after {
     content: "";
     position: absolute;
-    bottom: 10%;
-    right: 10%;
-    width: 600px;
-    height: 600px;
+    bottom: 20%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
     background: radial-gradient(
       circle,
-      rgba(255, 0, 110, 0.12) 0%,
+      rgba(255, 0, 110, 0.06) 0%,
       transparent 70%
     );
-    filter: blur(80px);
-    pointer-events: none;
+    border-radius: 50%;
+    filter: blur(100px);
   }
 
   @media (max-width: 960px) {
-    padding: 40px 0px 80px 0px;
+    padding: 40px 16px 80px 16px;
   }
 `;
 
 const Wrapper = styled.div`
   position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 100%;
   max-width: 1350px;
   padding: 10px 0px 100px 0;
-  gap: 20px;
+  gap: 12px;
   z-index: 1;
 
   @media (max-width: 960px) {
@@ -85,28 +73,20 @@ const Wrapper = styled.div`
   }
 `;
 
-// 🔥 3D holographic title
-const float = keyframes`
-  0%, 100% { 
-    transform: translateY(0px) perspective(1000px) rotateX(0deg); 
-  }
-  50% { 
-    transform: translateY(-15px) perspective(1000px) rotateX(5deg); 
-  }
+const gradientText = keyframes`
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 `;
 
-const colorShift = keyframes`
-  0% { 
-    filter: hue-rotate(0deg);
-    background-position: 0% 50%;
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  50% { 
-    filter: hue-rotate(30deg);
-    background-position: 100% 50%;
-  }
-  100% { 
-    filter: hue-rotate(0deg);
-    background-position: 0% 50%;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 `;
 
@@ -116,45 +96,12 @@ const Title = styled.div`
   font-weight: 800;
   margin-top: 20px;
   letter-spacing: 4px;
-  position: relative;
-
-  background: linear-gradient(
-    135deg,
-    #00f5ff 0%,
-    #ff006e 25%,
-    #b794f6 50%,
-    #00f5ff 75%,
-    #ff006e 100%
-  );
-  background-size: 300% 300%;
+  background: linear-gradient(135deg, #00f5ff 0%, #ff006e 50%, #b794f6 100%);
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: ${colorShift} 5s ease infinite, ${float} 4s ease-in-out infinite;
-
-  /* 3D layers */
-  text-shadow: 0 0 30px rgba(0, 245, 255, 0.5), 0 0 60px rgba(255, 0, 110, 0.3),
-    0 0 90px rgba(183, 148, 246, 0.2);
-
-  /* Glowing line below */
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 150px;
-    height: 4px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      #00f5ff,
-      #ff006e,
-      transparent
-    );
-    border-radius: 2px;
-    box-shadow: 0 0 20px #00f5ff, 0 0 40px #ff006e;
-  }
+  animation: ${gradientText} 4s ease infinite, ${fadeIn} 0.8s ease-out;
 
   @media (max-width: 768px) {
     margin-top: 12px;
@@ -170,6 +117,7 @@ const Desc = styled.div`
   color: ${({ theme }) => theme.text_secondary};
   line-height: 1.6;
   margin-top: 30px;
+  animation: ${fadeIn} 0.8s ease-out 0.2s both;
 
   @media (max-width: 768px) {
     margin-top: 12px;
@@ -177,91 +125,53 @@ const Desc = styled.div`
   }
 `;
 
-// 🔥 Futuristic toggle buttons with neon effects
 const ToggleButtonGroup = styled.div`
   display: flex;
-  border: 2px solid ${({ theme }) => theme.primary};
-  background: rgba(0, 245, 255, 0.05);
+  border: 2px solid rgba(0, 245, 255, 0.3);
+  background: rgba(15, 14, 23, 0.8);
   backdrop-filter: blur(10px);
-  color: ${({ theme }) => theme.primary};
-  font-size: 16px;
-  border-radius: 16px;
-  font-weight: 600;
-  margin: 30px 0px;
+  border-radius: 50px;
   padding: 6px;
-  box-shadow: 0 0 20px rgba(0, 245, 255, 0.3),
-    inset 0 0 20px rgba(0, 245, 255, 0.05);
+  margin: 30px 0px;
+  box-shadow: 0 8px 32px rgba(0, 245, 255, 0.15);
+  animation: ${fadeIn} 0.8s ease-out 0.4s both;
 
   @media (max-width: 768px) {
-    font-size: 12px;
     flex-wrap: wrap;
     gap: 6px;
     justify-content: center;
-  }
-`;
-
-const slideIn = keyframes`
-  from {
-    transform: scale(0.95);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
+    padding: 8px;
+    border-radius: 25px;
+    font-size: 12px;
   }
 `;
 
 const ToggleButton = styled.button`
   border: none;
   outline: none;
-  background: transparent;
+  background: ${({ active }) =>
+    active ? "linear-gradient(135deg, #00f5ff, #ff006e)" : "transparent"};
   padding: 10px 20px;
-  border-radius: 12px;
+  border-radius: 50px;
   cursor: pointer;
-  color: ${({ theme }) => theme.primary};
-  font-weight: 600;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  position: relative;
-  overflow: hidden;
+  color: ${({ active }) => (active ? "#000" : "#00f5ff")};
+  font-weight: ${({ active }) => (active ? "700" : "600")};
+  font-size: 16px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
 
-  /* Active state with gradient */
-  ${({ active, theme }) =>
+  ${({ active }) =>
     active &&
-    css`
-      background: linear-gradient(135deg, ${theme.primary}, #ff006e);
-      color: white;
-      box-shadow: 0 0 20px ${theme.primary}88,
-        inset 0 0 20px rgba(255, 255, 255, 0.2);
-      animation: ${slideIn} 0.3s ease;
-    `}
-
-  /* Shine effect on hover */
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.3),
-      transparent
-    );
-    transition: left 0.5s ease;
-  }
-
-  &:hover::before {
-    left: 100%;
-  }
+    `
+    box-shadow: 0 5px 15px rgba(0, 245, 255, 0.4);
+  `}
 
   &:hover {
-    background: ${({ active, theme }) =>
+    background: ${({ active }) =>
       active
-        ? `linear-gradient(135deg, ${theme.primary}, #FF006E)`
-        : `${theme.primary}22`};
-    transform: scale(1.05);
+        ? "linear-gradient(135deg, #00f5ff, #ff006e)"
+        : "rgba(0, 245, 255, 0.1)"};
+    transform: scale(1.02);
   }
 
   @media (max-width: 768px) {
@@ -271,69 +181,13 @@ const ToggleButton = styled.button`
   }
 `;
 
-const Divider = styled.div`
-  width: 2px;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    ${({ theme }) => theme.primary} 50%,
-    transparent 100%
-  );
-  margin: 0 4px;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
-// 🔥 Card container with stagger animation
 const CardContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 28px;
   flex-wrap: wrap;
-
-  /* Stagger animation for cards */
-  > * {
-    animation: cardFadeIn 0.6s ease-out backwards;
-  }
-
-  > *:nth-child(1) {
-    animation-delay: 0.1s;
-  }
-  > *:nth-child(2) {
-    animation-delay: 0.2s;
-  }
-  > *:nth-child(3) {
-    animation-delay: 0.3s;
-  }
-  > *:nth-child(4) {
-    animation-delay: 0.4s;
-  }
-  > *:nth-child(5) {
-    animation-delay: 0.5s;
-  }
-  > *:nth-child(6) {
-    animation-delay: 0.6s;
-  }
-  > *:nth-child(7) {
-    animation-delay: 0.7s;
-  }
-  > *:nth-child(8) {
-    animation-delay: 0.8s;
-  }
-
-  @keyframes cardFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(30px) scale(0.9);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-  }
+  animation: ${fadeIn} 0.8s ease-out 0.6s both;
 `;
 
 const Projects = ({ openModal, setOpenModal }) => {
@@ -355,28 +209,24 @@ const Projects = ({ openModal, setOpenModal }) => {
           >
             All
           </ToggleButton>
-          <Divider />
           <ToggleButton
             active={toggle === "web app"}
             onClick={() => setToggle("web app")}
           >
             Web Apps
           </ToggleButton>
-          <Divider />
           <ToggleButton
             active={toggle === "mobile app"}
             onClick={() => setToggle("mobile app")}
           >
             Mobile Apps
           </ToggleButton>
-          <Divider />
           <ToggleButton
             active={toggle === "Machine Learning"}
             onClick={() => setToggle("Machine Learning")}
           >
             ML/AI
           </ToggleButton>
-          <Divider />
           <ToggleButton
             active={toggle === "AI Game"}
             onClick={() => setToggle("AI Game")}
@@ -385,7 +235,7 @@ const Projects = ({ openModal, setOpenModal }) => {
           </ToggleButton>
         </ToggleButtonGroup>
 
-        <CardContainer key={toggle}>
+        <CardContainer>
           {projects
             .filter((item) => toggle === "all" || item.category === toggle)
             .map((project) => (

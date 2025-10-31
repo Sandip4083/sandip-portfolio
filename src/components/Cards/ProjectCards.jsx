@@ -11,49 +11,47 @@ const Button = styled.button`
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.8s ease-in-out;
+    transition: all 0.3s ease;
 `
 
-// 🔥 Card with proper overflow handling
 const Card = styled.div`
     width: 200px;
-    height: 290px;
+    height: 260px;
     background-color: ${({ theme }) => theme.card};
     cursor: pointer;
     border-radius: 10px;
-    
-    /* Neon Border */
     border: 2px solid ${({ theme }) => theme.primary};
-    box-shadow: 0 0 8px ${({ theme }) => theme.primary}88,
-                0 0 16px ${({ theme }) => theme.primary}55;
-
+    box-shadow: 0 0 8px ${({ theme }) => theme.primary}88;
     overflow: hidden;
-    padding: 10px 8px 18px 8px;  /* 🔥 More bottom padding: 18px */
+    padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 6px;
-    transition: all 0.4s ease-in-out;
-    position: relative;  /* 🔥 For absolute positioning if needed */
+    transition: all 0.3s ease;
 
     &:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 0 16px ${({ theme }) => theme.primary},
-                    0 0 30px ${({ theme }) => theme.primary}aa;
-        filter: brightness(1.1);
+        transform: translateY(-5px);
+        box-shadow: 0 0 16px ${({ theme }) => theme.primary};
     }
 
     &:hover ${Button} {
         display: block;
     }
+
+    @media (max-width: 768px) {
+        width: 100%;
+        max-width: 280px;
+    }
 `;
 
 const Image = styled.img`
     width: 100%;
-    height: 100px;
+    height: 95px;
     background-color: ${({ theme }) => theme.white};
     border-radius: 7px;
     box-shadow: 0 0 10px 2px rgba(0,0,0,0.3);
-    object-fit: cover;
+    object-fit: contain;
+    flex-shrink: 0;
 `
 
 const Tags = styled.div`
@@ -63,6 +61,7 @@ const Tags = styled.div`
     flex-wrap: wrap;
     gap: 3px;
     margin-top: 2px;
+    flex-shrink: 0;
 `
 
 const Tag = styled.span`
@@ -80,8 +79,9 @@ const Details = styled.div`
     flex-direction: column;
     gap: 2px;
     padding: 0px;
-    flex: 1;  /* 🔥 Takes available space */
-    min-height: 0;  /* 🔥 Allows flex shrinking */
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
 `
 
 const Title = styled.div`
@@ -109,7 +109,7 @@ const Description = styled.div`
     font-weight: 400;
     color: ${({ theme }) => theme.text_secondary + 99};
     overflow: hidden;
-    margin-top: 3px;
+    margin-top: 2px;
     display: -webkit-box;
     max-width: 100%;
     -webkit-line-clamp: 2;
@@ -118,28 +118,24 @@ const Description = styled.div`
     line-height: 1.4;
 `
 
-// 🔥 Members - positioned at bottom, never gets cut
 const Members = styled.div`
     display: flex;
     align-items: center;
-    padding-left: 4px;
-    padding-top: 6px;
-    padding-bottom: 2px;
-    min-height: 26px;  /* 🔥 Guaranteed space for 20px icons */
-    margin-top: auto;  /* 🔥 Pushes to bottom */
-    flex-shrink: 0;  /* 🔥 Won't shrink */
+    padding-top: 4px;
+    min-height: 22px;
+    margin-top: auto;
+    flex-shrink: 0;
 `
 
-// 🔥 Avatar - properly sized and positioned
 const Avatar = styled.img`
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     margin-left: -5px;
     background-color: ${({ theme }) => theme.white};
     box-shadow: 0 0 4px rgba(0,0,0,0.2);
     border: 1.5px solid ${({ theme }) => theme.card};
-    flex-shrink: 0;  /* 🔥 Won't shrink */
+    flex-shrink: 0;
     
     &:first-child {
         margin-left: 0;
