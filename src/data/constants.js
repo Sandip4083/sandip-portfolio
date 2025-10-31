@@ -9,6 +9,7 @@ export const Bio = {
   linkedin: "https://www.linkedin.com/in/sandip-kumar-sah98/",
   insta: "https://www.instagram.com/sandip.083?igsh=MXdjaTdmOG13bDh6Nw==",
   facebook: "https://www.facebook.com/sandip.kr.566?mibextid=ZbWKwL",
+  twitter: "https://x.com/sandip4083",
 };
 
 export const skills = [
@@ -69,8 +70,7 @@ export const skills = [
     skills: [
       {
         name: "Java",
-        image:
-          "https://seeklogo.com/images/J/java-logo-7833D1D21A-seeklogo.com.png",
+        image: "https://www.svgrepo.com/show/452234/java.svg",
       },
       {
         name: "Android Studio",
@@ -100,6 +100,99 @@ export const skills = [
   },
 ];
 
+// 🔥 NEW: Certificates Data
+export const certificates = [
+  {
+    title: "Web & App Development",
+    certs: [
+      {
+        name: "React JS",
+        image:
+          "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K",
+        link: "https://drive.google.com/file/d/1Y-ndNe7VUBuQtqzKBoEGqxrNts9hCteE/view?usp=sharing",
+      },
+      {
+        name: "JavaScript",
+        image:
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/800px-JavaScript-logo.png",
+        link: "https://drive.google.com/file/d/1tL1ITUZE6Qg-khmiaajTlU2cTWeXnr3W/view?usp=sharing",
+      },
+      {
+        name: "HTML & CSS",
+        image: "https://www.w3.org/html/logo/badge/html5-badge-h-solo.png",
+        link: "https://drive.google.com/file/d/1fAjG3OZ50H90US0hHeHbvvZWqpPmfh7j/view?usp=sharing",
+      },
+      {
+        name: "Flutter",
+        image:
+          "https://cdn-images-1.medium.com/max/1200/1*5-aoK8IBmXve5whBQM90GA.png",
+        link: "https://drive.google.com/file/d/1WjkZL9vjUIAXm2e48DbPWo0780-mqyGH/view?usp=sharing",
+      },
+      {
+        name: "Android Mob App",
+        image: "https://www.svgrepo.com/show/303175/android-logo.svg",
+        link: "https://drive.google.com/file/d/1qIIfP9VNJo1W2X278ttp5ST1XmAp7Zha/view?usp=sharing",
+      },
+    ],
+  },
+  {
+    title: "Programming Certificates",
+    certs: [
+      {
+        name: "Python",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg",
+        link: "https://drive.google.com/file/d/12uGv_gFGAse1OI_jPFKwQA2Zpi4cH1dD/view?usp=sharing",
+      },
+      {
+        name: "Java",
+        image: "https://www.svgrepo.com/show/303654/java-logo.svg",
+        link: "https://drive.google.com/file/d/1iy9aS0jpO11StObkHjxRmFa3ztsAFfDH/view?usp=sharing",
+      },
+    ],
+  },
+  {
+    title: "Database Certificates",
+    certs: [
+      {
+        name: "MySQL",
+        image: "https://pngimg.com/d/mysql_PNG9.png",
+        link: "https://drive.google.com/file/d/1MEn5UEClkAuhY2J24fCuEhCs4aWoiz9r/view?usp=sharing",
+      },
+      {
+        name: "MongoDB & Node.js",
+        image: "https://cdn.worldvectorlogo.com/logos/mongodb-icon-2.svg",
+        link: "https://drive.google.com/file/d/1xc8nlBbmekQuOR_mI-DMggvJc0sR0Fy0/view?usp=sharing",
+      },
+    ],
+  },
+  {
+    title: "Others",
+    certs: [
+      {
+        name: "AWS_Cloud",
+        image: "https://www.svgrepo.com/show/373458/aws.svg",
+        link: "https://drive.google.com/file/d/1vq_rKpaGU5ccl8a31U6H1iPm0_evHJg6/view?usp=drive_link",
+      },
+      {
+        name: "AWS_Data Engg",
+        image: "https://www.svgrepo.com/show/331300/aws.svg",
+        link: "https://drive.google.com/file/d/1qcRdCSz2yLapQXjaGWw2XGTN4diXuJjR/view?usp=drive_link",
+      },
+      {
+        name: "CyberSecurity",
+        image: "https://www.svgrepo.com/show/485059/security-shield.svg",
+        link: "https://drive.google.com/file/d/1q1x0IDHEupgRpJgO9uCbuGDlbSflUDHV/view?usp=drive_link",
+      },
+      {
+        name: "Linux",
+        image: "https://www.svgrepo.com/show/448236/linux.svg",
+        link: "https://drive.google.com/file/d/1nR_cTHgL6sWmrzlEKDBAoZmFtDIZlONh/view?usp=drive_link",
+      },
+    ],
+  },
+];
+
 export const experiences = [];
 
 export const education = [
@@ -107,7 +200,7 @@ export const education = [
     id: 0,
     img: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/Kiit.jpeg?alt=media&token=3839d520-c59d-4341-ad8f-0980c98de4dd",
     school: "Kalinga Institute of Industrial Technology, Bhubaneswar",
-    date: "Oct 2022 - Running",
+    date: "Oct 2022 - May 2026",
     grade: "8.61 CGPA",
     desc: "I am currently pursuing a Bachelor's degree in Computer Science and Engineering at Kalinga Institute of Industrial Technology, Bhubaneswar. I have completed 6 semesters and have a CGPA of 8.61. I have taken courses in Data Structures, Algorithms, Object-Oriented Programming, Database Management Systems, Operating Systems, and Computer Networks.",
     degree: "Bachelor of Technology - BTech, Computer Science and Engineering",
@@ -177,5 +270,32 @@ export const projects = [
     category: "AI Game",
     github: "https://snake-ai-w4ta.onrender.com",
     webapp: "https://snake-ai-w4ta.onrender.com",
+  },
+
+  {
+    id: 105,
+    title: "CurroX - Currency Converter",
+    date: "2025",
+    description:
+      "A beautiful, modern, and feature-rich currency converter built with Flutter.Convert between 160+ world currencies with real-time exchange rates!",
+    image:
+      "https://github.com/user-attachments/assets/8d2a4b87-b73d-440e-aaf9-6d5652228ce8",
+    tags: ["Flutter", "Dart", "SharedPreferences"],
+    category: "mobile app",
+    github: "https://sandip4083.github.io/CurroX_App/",
+    webapp: "https://sandip4083.github.io/CurroX_App/",
+  },
+  {
+    id: 106,
+    title: "RemindGo - Smart Reminder & Alarm",
+    date: "2025",
+    description:
+      "Built an intelligent reminder and alarm application using Flutter and Dart. Features include customizable alarms, recurring reminders, snooze functionality, and priority-based notifications. Used SharedPreferences for local data persistence and alarm scheduling.",
+    image:
+      "https://github.com/user-attachments/assets/fe7e6ac7-7e83-4155-8b90-11a5a1d625f2",
+    tags: ["Flutter", "Dart", "Local Notifications", "SharedPreferences"],
+    category: "mobile app",
+    github: "https://sandip4083.github.io/RemindGo_App/",
+    webapp: "https://sandip4083.github.io/RemindGo_App/",
   },
 ];

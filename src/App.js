@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import "./App.css";
+import Certificates from "./components/Certificates";
 import Contact from "./components/Contact";
 import Education from "./components/Education";
 import Experience from "./components/Experience";
@@ -33,6 +34,7 @@ const Wrapper = styled.div`
   width: 100%;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 98%, 0 100%);
 `;
+
 function App() {
   const [darkMode] = useState(true);
   const [openModal, setOpenModal] = useState({ state: false, project: null });
@@ -50,6 +52,7 @@ function App() {
           <Projects openModal={openModal} setOpenModal={setOpenModal} />
           <Wrapper>
             <Education />
+            <Certificates />
             <Contact />
           </Wrapper>
           <Footer />

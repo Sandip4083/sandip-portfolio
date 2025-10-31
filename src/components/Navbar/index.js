@@ -35,7 +35,7 @@ const Navbar = () => {
               cursor: "pointer",
             }}
           >
-            <Span>🧑‍💻 PORTFOLIO</Span>
+            <Span>👨‍💻 PORTFOLIO</Span>
           </div>
         </NavLogo>
 
@@ -51,6 +51,7 @@ const Navbar = () => {
           <NavLink href="#experience">Experience</NavLink>
           <NavLink href="#projects">Projects</NavLink>
           <NavLink href="#education">Education</NavLink>
+          <NavLink href="#certificates">Certificates</NavLink>
         </NavItems>
 
         {/* GitHub Button (Desktop) */}
@@ -83,6 +84,9 @@ const Navbar = () => {
             </MobileLink>
             <MobileLink href="#education" onClick={() => setIsOpen(false)}>
               Education
+            </MobileLink>
+            <MobileLink href="#certificates" onClick={() => setIsOpen(false)}>
+              Certificates
             </MobileLink>
 
             {/* GitHub Button (Mobile) */}

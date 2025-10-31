@@ -3,164 +3,162 @@ import { Modal } from '@mui/material';
 import styled from 'styled-components';
 
 const Container = styled.div`
-width: 100%;
-height: 100%;
-position: absolute;
-top: 0;
-left: 0;
-background-color: #000000a7;
-display: flex;
-align-items: top;
-justify-content: center;
-overflow-y: scroll;
-transition: all 0.5s ease;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000000a7;
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    overflow-y: scroll;
+    transition: all 0.5s ease;
 `;
 
+// 🔥 EXTRA SMALL MODAL: 360px max-width
 const Wrapper = styled.div`
-max-width: 800px;
-width: 100%;
-border-radius: 16px;
-margin: 50px 12px;
-height: min-content;
-background-color: ${({ theme }) => theme.card};
-color: ${({ theme }) => theme.text_primary};
-padding: 20px;
-display: flex;
-flex-direction: column;
-position: relative;
+    max-width: 360px;
+    width: 92%;
+    border-radius: 10px;
+    margin: 25px 10px;
+    height: min-content;
+    background-color: ${({ theme }) => theme.card};
+    color: ${({ theme }) => theme.text_primary};
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
 `;
 
+// 🔥 Title: 16px
 const Title = styled.div`
-  font-size: 28px;
-  font-weight: 600;
-  color: ${({ theme }) => theme.text_primary};
-  margin: 8px 6px 0px 6px;
-  @media only screen and (max-width: 600px) {
-      font-size: 24px;
-      margin: 6px 6px 0px 6px;
-  }
+    font-size: 16px;
+    font-weight: 600;
+    color: ${({ theme }) => theme.text_primary};
+    margin: 3px 3px 0px 3px;
+    line-height: 1.3;
+    @media only screen and (max-width: 600px) {
+        font-size: 15px;
+    }
 `;
 
+// 🔥 Date: 10px
 const Date = styled.div`
-    font-size: 16px;
-    margin: 2px 6px;
+    font-size: 10px;
+    margin: 2px 3px;
     font-weight: 400;
     color: ${({ theme }) => theme.text_secondary};
     @media only screen and (max-width: 768px){
-        font-size: 12px;
+        font-size: 9px;
     }
 `
 
-
-
+// 🔥 Description: 11px
 const Desc = styled.div`
-    font-size: 16px;
+    font-size: 11px;
     font-weight: 400;
     color: ${({ theme }) => theme.text_primary};
-    margin: 8px 6px;
+    margin: 3px 3px;
+    line-height: 1.5;
     @media only screen and (max-width: 600px) {
-        font-size: 14px;
-        margin: 6px 6px;
+        font-size: 10px;
     }
 `;
 
+// 🔥 Image: compact
 const Image = styled.img`
     width: 100%;
     object-fit: cover;
-    border-radius: 12px;
-    margin-top: 30px;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.3);
 `;
 
+// 🔥 Label: 14px
 const Label = styled.div`
-    font-size: 20px;
+    font-size: 14px;
     font-weight: 600;
     color: ${({ theme }) => theme.text_primary};
-    margin: 8px 6px;
+    margin: 3px 3px;
     @media only screen and (max-width: 600px) {
-        font-size: 16px;
-        margin: 8px 6px;
+        font-size: 13px;
     }
 `;
 
 const Tags = styled.div`
     display: flex;
     flex-wrap: wrap;
-    margin: 8px 0px;
-    @media only screen and (max-width: 600px) {
-        margin: 4px 0px;
-    }
+    margin: 3px 0px;
+    gap: 3px;
 `;
 
+// 🔥 Tag: 9px
 const Tag = styled.div`
-    font-size: 14px;
+    font-size: 9px;
     font-weight: 400;
     color: ${({ theme }) => theme.primary};
-    margin: 4px;
-    padding: 4px 8px;
-    border-radius: 8px;
+    padding: 2px 5px;
+    border-radius: 5px;
     background-color: ${({ theme }) => theme.primary + 20};
     @media only screen and (max-width: 600px) {
-        font-size: 12px;
+        font-size: 8px;
     }
 `;
 
 const Members = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    flex-wrap: wrap;
-    margin: 12px 6px;
-    @media only screen and (max-width: 600px) {
-        margin: 4px 6px;
-    }
+    gap: 5px;
+    margin: 5px 3px;
 `;
 
 const Member = styled.div`
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 6px;
 `;
 
+// 🔥 Member Image: 26px
 const MemberImage = styled.img`
-    width: 50px;
-    height: 50px;
+    width: 26px;
+    height: 26px;
     object-fit: cover;
     border-radius: 50%;
-    margin-bottom: 4px;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.3);
     @media only screen and (max-width: 600px) {
-        width: 32px;
-        height: 32px;
+        width: 24px;
+        height: 24px;
     }
 `;
 
+// 🔥 Member Name: 11px
 const MemberName = styled.div`
-    font-size: 16px;
+    font-size: 11px;
     font-weight: 500;
-    width: 200px;
+    flex: 1;
     color: ${({ theme }) => theme.text_primary};
     @media only screen and (max-width: 600px) {
-        font-size: 14px;
+        font-size: 10px;
     }
 `;
-
 
 const ButtonGroup = styled.div`
     display: flex;
     justify-content: flex-end;
-    margin: 12px 0px;
-    gap: 12px;
+    margin: 6px 0px 3px 0px;
+    gap: 6px;
 `;
 
+// 🔥 Button: 11px, compact
 const Button = styled.a`
     width: 100%;
     text-align: center;
-    font-size: 16px;
+    font-size: 11px;
     font-weight: 600;
     color: ${({ theme }) => theme.text_primary};
-    padding: 12px 16px;
-    border-radius: 8px;
+    padding: 7px 8px;
+    border-radius: 7px;
     background-color: ${({ theme }) => theme.primary};
     ${({ dull, theme }) => dull && `
         background-color: ${theme.bgLight};
@@ -176,10 +174,15 @@ const Button = styled.a`
         background-color: ${({ theme }) => theme.primary + 99};
     }
     @media only screen and (max-width: 600px) {
-        font-size: 12px;
+        font-size: 10px;
+        padding: 6px 7px;
     }
 `;
 
+const SocialIcons = styled.div`
+    display: flex;
+    gap: 6px;
+`;
 
 const index = ({ openModal, setOpenModal }) => {
     const project = openModal?.project;
@@ -190,9 +193,10 @@ const index = ({ openModal, setOpenModal }) => {
                     <CloseRounded
                         style={{
                             position: "absolute",
-                            top: "10px",
-                            right: "20px",
+                            top: "6px",
+                            right: "10px",
                             cursor: "pointer",
+                            fontSize: "18px",
                         }}
                         onClick={() => setOpenModal({ state: false, project: null })}
                     />
@@ -200,8 +204,8 @@ const index = ({ openModal, setOpenModal }) => {
                     <Title>{project?.title}</Title>
                     <Date>{project.date}</Date>
                     <Tags>
-                        {project?.tags.map((tag) => (
-                            <Tag>{tag}</Tag>
+                        {project?.tags.map((tag, index) => (
+                            <Tag key={index}>{tag}</Tag>
                         ))}
                     </Tags>
                     <Desc>{project?.description}</Desc>
@@ -209,28 +213,28 @@ const index = ({ openModal, setOpenModal }) => {
                         <>
                             <Label>Members</Label>
                             <Members>
-                                {project?.member.map((member) => (
-                                    <Member>
+                                {project?.member.map((member, index) => (
+                                    <Member key={index}>
                                         <MemberImage src={member.img} />
                                         <MemberName>{member.name}</MemberName>
-                                        <a href={member.github} target="new" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                            <GitHub />
-                                        </a>
-                                        <a href={member.linkedin} target="new" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                            <LinkedIn />
-                                        </a>
+                                        <SocialIcons>
+                                            <a href={member.github} target="new" style={{ textDecoration: 'none', color: 'inherit', display: 'flex' }}>
+                                                <GitHub style={{ fontSize: '16px' }} />
+                                            </a>
+                                            <a href={member.linkedin} target="new" style={{ textDecoration: 'none', color: 'inherit', display: 'flex' }}>
+                                                <LinkedIn style={{ fontSize: '16px' }} />
+                                            </a>
+                                        </SocialIcons>
                                     </Member>
                                 ))}
                             </Members>
                         </>
                     )}
                     <ButtonGroup>
-                        {/* <Button dull href={project?.github} target='new'>View Code</Button> */}
                         <Button href={project?.webapp} target='new'>View Live App</Button>
                     </ButtonGroup>
                 </Wrapper>
             </Container>
-
         </Modal>
     )
 }
