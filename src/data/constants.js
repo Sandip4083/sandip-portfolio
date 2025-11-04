@@ -283,7 +283,7 @@ export const projects = [
     tags: ["Flutter", "Dart", "SharedPreferences"],
     category: "mobile app",
     github: "https://sandip4083.github.io/CurroX_App/",
-    webapp: "https://sandip4083.github.io/CurroX_App/",
+    webapp: "https://sandip4083.github.io/CurroX_web/",
   },
   {
     id: 106,
