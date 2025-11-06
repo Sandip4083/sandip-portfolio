@@ -182,7 +182,7 @@ export const certificates = [
       {
         name: "CyberSecurity",
         image: "https://www.svgrepo.com/show/485059/security-shield.svg",
-        link: "https://drive.google.com/file/d/1q1x0IDHEupgRpJgO9uCbuGDlbSflUDHV/view?usp=drive_link",
+        link: "https://drive.google.com/file/d/1UntWD1E0hKmGmLHTjxr8R3L7rxQnulKr/view?usp=sharing",
       },
       {
         name: "Linux",
