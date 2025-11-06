@@ -149,6 +149,11 @@ export const certificates = [
         image: "https://www.svgrepo.com/show/303654/java-logo.svg",
         link: "https://drive.google.com/file/d/1iy9aS0jpO11StObkHjxRmFa3ztsAFfDH/view?usp=sharing",
       },
+      {
+        name: "Data Science",
+        image: "https://www.svgrepo.com/show/299211/big-data.svg",
+        link: "https://drive.google.com/file/d/1ZvgefG0e07BkpU04Ib88nESgRGM3HN2F/view?usp=drive_link",
+      },
     ],
   },
   {
@@ -182,7 +187,7 @@ export const certificates = [
       {
         name: "CyberSecurity",
         image: "https://www.svgrepo.com/show/485059/security-shield.svg",
-        link: "https://drive.google.com/file/d/1q1x0IDHEupgRpJgO9uCbuGDlbSflUDHV/view?usp=drive_link",
+        link: "https://drive.google.com/file/d/1UntWD1E0hKmGmLHTjxr8R3L7rxQnulKr/view?usp=drive_link",
       },
       {
         name: "Linux",
