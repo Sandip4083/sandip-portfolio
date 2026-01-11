@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/sandip-portfolio/static/css/main.9865eb60.css",
-    "main.js": "/sandip-portfolio/static/js/main.051f4e9c.js",
+    "main.js": "/sandip-portfolio/static/js/main.23b1460c.js",
     "static/media/sandip.jpg": "/sandip-portfolio/static/media/sandip.7d4331459de5b7219cb7.jpg",
     "index.html": "/sandip-portfolio/index.html",
     "main.9865eb60.css.map": "/sandip-portfolio/static/css/main.9865eb60.css.map",
-    "main.051f4e9c.js.map": "/sandip-portfolio/static/js/main.051f4e9c.js.map"
+    "main.23b1460c.js.map": "/sandip-portfolio/static/js/main.23b1460c.js.map"
   },
   "entrypoints": [
     "static/css/main.9865eb60.css",
-    "static/js/main.051f4e9c.js"
+    "static/js/main.23b1460c.js"
   ]
 }
