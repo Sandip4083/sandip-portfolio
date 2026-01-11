@@ -5,7 +5,7 @@ export const Bio = {
     "I'm a motivated and adaptable individual, passionate about learning and committed to delivering quality results with a positive, growth-oriented mindset.",
   github: "https://github.com/Sandip4083",
   resume:
-    "https://drive.google.com/file/d/1QVFSjKM_8C6Rdf-kdUlT-BQlrRvdzmc2/view?usp=drive_link",
+    "https://drive.google.com/file/d/1rZQq-FMqGWTvpcQ0Je35M2DOInSkpnEp/view?usp=drive_link",
   linkedin: "https://www.linkedin.com/in/sandip-kumar-sah98/",
   insta: "https://www.instagram.com/sandip.083?igsh=MXdjaTdmOG13bDh6Nw==",
   facebook: "https://www.facebook.com/sandip.kr.566?mibextid=ZbWKwL",
