@@ -1,6 +1,6 @@
 export const Bio = {
   name: "Sandip Kumar Sah",
-  roles: ["Programmer", "Frontend Developer"],
+  roles: ["Programmer", "Full-Stack Developer"],
   description:
     "I'm a motivated and adaptable individual, passionate about learning and committed to delivering quality results with a positive, growth-oriented mindset.",
   github: "https://github.com/Sandip4083",
@@ -203,12 +203,12 @@ export const experiences = [];
 export const education = [
   {
     id: 0,
-    img: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/Kiit.jpeg?alt=media&token=3839d520-c59d-4341-ad8f-0980c98de4dd",
-    school: "Kalinga Institute of Industrial Technology, Bhubaneswar",
+    img: "https://kiit.ac.in/grp/KIIT-logo.png",
+    school: "Kalinga Institute of Industrial Technology[KiiT], Bhubaneswar",
     date: "Oct 2022 - May 2026",
-    grade: "8.61 CGPA",
-    desc: "I am currently pursuing a Bachelor's degree in Computer Science and Engineering at Kalinga Institute of Industrial Technology, Bhubaneswar. I have completed 6 semesters and have a CGPA of 8.61. I have taken courses in Data Structures, Algorithms, Object-Oriented Programming, Database Management Systems, Operating Systems, and Computer Networks.",
-    degree: "Bachelor of Technology - BTech, Computer Science and Engineering",
+    grade: "8.74 CGPA",
+    desc: "I am currently pursuing a Bachelor's degree in Computer Science and Engineering at Kalinga Institute of Industrial Technology, Bhubaneswar. I have taken courses in Data Structures, Algorithms, Object-Oriented Programming, Database Management Systems, Operating Systems, and Computer Networks.",
+    degree: "Bachelor of Technology - B.Tech, Computer Science and Engineering",
   },
 ];
 
