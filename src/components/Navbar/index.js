@@ -1,7 +1,5 @@
-import React from "react";
-import { DiCssdeck } from "react-icons/di";
-import { FaBars, FaGithub } from "react-icons/fa";
-import { useTheme } from "styled-components";
+import React, { useEffect, useState } from "react";
+import { FaBars, FaTimes, FaGithub } from "react-icons/fa";
 import { Bio } from "../../data/constants";
 import {
   ButtonContainer,
@@ -18,93 +16,116 @@ import {
   Span,
 } from "./NavbarStyledComponent";
 
+const NAV_LINKS = [
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
+  { label: "Education", href: "#education" },
+  { label: "Certificates", href: "#certificates" },
+];
+
 const Navbar = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const theme = useTheme();
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("about");
+
+  // Scroll spy
+  useEffect(() => {
+    const ids = NAV_LINKS.map((l) => l.href.replace("#", ""));
+    const handleScroll = () => {
+      const scrollY = window.scrollY + 100;
+      for (let i = ids.length - 1; i >= 0; i--) {
+        const el = document.getElementById(ids[i]);
+        if (el && el.offsetTop <= scrollY) {
+          setActiveSection(ids[i]);
+          break;
+        }
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close mobile menu on resize
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth > 768) setIsOpen(false);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   return (
     <Nav>
       <NavbarContainer>
-        {/* Desktop Logo */}
+        {/* Logo */}
         <NavLogo to="/">
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              color: "white",
-              cursor: "pointer",
-            }}
-          >
-            <Span>👨‍💻 PORTFOLIO</Span>
-          </div>
+          <Span>👨‍💻 Sandip</Span>
         </NavLogo>
 
-        {/* Mobile Icon (Hamburger) */}
-        <MobileIcon>
-          <FaBars onClick={() => setIsOpen(!isOpen)} />
+        {/* Mobile Hamburger */}
+        <MobileIcon onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? <FaTimes /> : <FaBars />}
         </MobileIcon>
 
-        {/* Navbar Links (Desktop) */}
+        {/* Desktop Nav Links */}
         <NavItems>
-          <NavLink href="#about">About</NavLink>
-          <NavLink href="#skills">Skills</NavLink>
-          <NavLink href="#experience">Experience</NavLink>
-          <NavLink href="#projects">Projects</NavLink>
-          <NavLink href="#education">Education</NavLink>
-          <NavLink href="#certificates">Certificates</NavLink>
+          {NAV_LINKS.map(({ label, href }) => (
+            <NavLink
+              key={href}
+              href={href}
+              className={
+                activeSection === href.replace("#", "") ? "active" : ""
+              }
+            >
+              {label}
+            </NavLink>
+          ))}
         </NavItems>
 
         {/* GitHub Button (Desktop) */}
         <ButtonContainer>
-          <GitHubButton href={Bio.github} target="_blank">
-            <FaGithub style={{ marginRight: "8px", fontSize: "20px" }} />
-            View Github
+          <GitHubButton
+            href={Bio.github}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaGithub style={{ fontSize: "17px" }} />
+            GitHub
           </GitHubButton>
         </ButtonContainer>
 
         {/* Mobile Menu */}
-        {isOpen && (
-          <MobileMenu isOpen={isOpen}>
-            {/* Mobile Logo */}
-            <MobileNavLogo to="/" onClick={() => setIsOpen(false)}>
-              <DiCssdeck size="2rem" /> <Span>Portfolio</Span>
-            </MobileNavLogo>
+        <MobileMenu isOpen={isOpen}>
+          <MobileNavLogo to="/" onClick={() => setIsOpen(false)}>
+            <Span>👨‍💻 Sandip.dev</Span>
+          </MobileNavLogo>
 
-            <MobileLink href="#about" onClick={() => setIsOpen(false)}>
-              About
+          {NAV_LINKS.map(({ label, href }) => (
+            <MobileLink
+              key={href}
+              href={href}
+              className={
+                activeSection === href.replace("#", "") ? "active" : ""
+              }
+              onClick={() => setIsOpen(false)}
+            >
+              {label}
             </MobileLink>
-            <MobileLink href="#skills" onClick={() => setIsOpen(false)}>
-              Skills
-            </MobileLink>
-            <MobileLink href="#experience" onClick={() => setIsOpen(false)}>
-              Experience
-            </MobileLink>
-            <MobileLink href="#projects" onClick={() => setIsOpen(false)}>
-              Projects
-            </MobileLink>
-            <MobileLink href="#education" onClick={() => setIsOpen(false)}>
-              Education
-            </MobileLink>
-            <MobileLink href="#certificates" onClick={() => setIsOpen(false)}>
-              Certificates
-            </MobileLink>
+          ))}
 
-            {/* GitHub Button (Mobile) */}
+          <div style={{ padding: "16px 32px 0" }}>
             <GitHubButton
-              style={{
-                padding: "10px 16px",
-                background: `${theme.primary}`,
-                color: "white",
-                width: "max-content",
-              }}
               href={Bio.github}
               target="_blank"
+              rel="noopener noreferrer"
+              style={{ width: "100%", justifyContent: "center" }}
             >
-              <FaGithub style={{ marginRight: "8px", fontSize: "20px" }} />
-              View Github
+              <FaGithub style={{ fontSize: "17px" }} />
+              View GitHub
             </GitHubButton>
-          </MobileMenu>
-        )}
+          </div>
+        </MobileMenu>
       </NavbarContainer>
     </Nav>
   );

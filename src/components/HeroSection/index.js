@@ -19,6 +19,7 @@ import {
   HeroLeftContainer,
   HeroRightContainer,
   Img,
+  ImgInner,
   ImgWrapper,
   NameHighlight,
   ResumeButton,
@@ -164,10 +165,12 @@ const HeroSection = () => {
             </SocialLinks>
           </HeroLeftContainer>
 
-          {/* ---- Right Side (Epic Animated Image) ---- */}
+          {/* ---- Right Side ---- */}
           <HeroRightContainer>
             <ImgWrapper>
-              <Img src={HeroImg} alt={Bio.name} />
+              <ImgInner>
+                <Img src={HeroImg} alt={Bio.name} />
+              </ImgInner>
             </ImgWrapper>
           </HeroRightContainer>
         </HeroInnerContainer>

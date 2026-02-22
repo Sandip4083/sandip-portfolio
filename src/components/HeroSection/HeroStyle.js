@@ -1,55 +1,70 @@
 import styled, { keyframes } from "styled-components";
 
+/* ── Animations ── */
+const fadeUp = keyframes`
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+`;
+
+const rotateRing = keyframes`
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+`;
+
+const colorShift = keyframes`
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+`;
+
+/* ── Layout ── */
 export const HeroContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 55px 30px 60px 30px;
-  min-height: auto;
-  z-index: 1;
-  background: linear-gradient(135deg, #0f0e17 0%, #1a1a2e 50%, #0f0e17 100%);
+  padding: 5px 40px 80px;
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      rgba(133, 76, 230, 0.12) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 100% 60%,
+      rgba(0, 245, 255, 0.07) 0%,
+      transparent 60%
+    ),
+    #0a0a14;
   overflow: hidden;
-  scroll-margin-top: 80px;
 
-  /* Static glowing orbs */
+  /* decorative elements */
   &::before {
     content: "";
     position: absolute;
-    top: -10%;
-    right: -5%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(
-      circle,
-      rgba(16, 237, 204, 0.1) 0%,
-      transparent 70%
-    );
-    border-radius: 50%;
-    filter: blur(80px);
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: -10%;
-    left: -5%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(
-      circle,
-      rgba(178, 72, 236, 0.08) 0%,
-      transparent 70%
-    );
-    border-radius: 50%;
-    filter: blur(90px);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+      radial-gradient(
+        circle at 20% 30%,
+        rgba(133, 76, 230, 0.06) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 80%,
+        rgba(0, 245, 255, 0.04) 0%,
+        transparent 50%
+      );
+    pointer-events: none;
   }
 
   @media (max-width: 960px) {
-    padding: 100px 20px 50px 20px;
+    padding: 10px 24px 60px;
   }
   @media (max-width: 640px) {
-    padding: 90px 16px 40px 16px;
+    padding: 8px 20px 48px;
   }
 `;
 
@@ -60,12 +75,13 @@ export const HeroInnerContainer = styled.div`
   align-items: center;
   width: 100%;
   max-width: 1200px;
-  gap: 50px;
+  gap: 60px;
   z-index: 1;
 
   @media (max-width: 960px) {
     flex-direction: column;
-    gap: 30px;
+    gap: 40px;
+    text-align: center;
   }
 `;
 
@@ -73,17 +89,18 @@ export const HeroLeftContainer = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
+  max-width: 600px;
 
   @media (max-width: 960px) {
     order: 2;
     align-items: center;
-    text-align: center;
+    max-width: 100%;
   }
 `;
 
 export const HeroRightContainer = styled.div`
-  flex: 1;
+  flex: 0 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -93,77 +110,71 @@ export const HeroRightContainer = styled.div`
   }
 `;
 
-// 🔥 Epic rotating ring animation
-const rotateRing = keyframes`
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-`;
-
-const pulseGlow = keyframes`
-  0%, 100% {
-    box-shadow: 
-      0 0 40px rgba(16, 237, 204, 0.5),
-      0 0 80px rgba(178, 72, 236, 0.3);
-  }
-  50% {
-    box-shadow: 
-      0 0 60px rgba(16, 237, 204, 0.7),
-      0 0 120px rgba(178, 72, 236, 0.5);
-  }
-`;
-
+/* ── Image ── */
 export const ImgWrapper = styled.div`
   position: relative;
-  width: clamp(280px, 32vw, 380px);
-  height: clamp(280px, 32vw, 380px);
+  width: clamp(260px, 30vw, 360px);
+  height: clamp(260px, 30vw, 360px);
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+  transition: transform 0.4s ease;
 
-  /* Animated rotating gradient border */
+  /* Outer pulsing glow aura */
   &::before {
     content: "";
     position: absolute;
-    inset: -6px;
+    inset: -14px;
     border-radius: 50%;
-    padding: 6px;
-    background: linear-gradient(
-      45deg,
-      #10edcc,
-      #b248ec,
-      #ff006e,
+    background: conic-gradient(
+      from 0deg,
       #00f5ff,
-      #10edcc
+      #854ce6,
+      #ff006e,
+      #fbbf24,
+      #00f5ff
     );
-    background-size: 300% 300%;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    animation: ${rotateRing} 4s linear infinite;
+    animation: ${rotateRing} 5s linear infinite;
+    z-index: 0;
     filter: blur(1px);
   }
 
-  /* Pulsing glow effect */
+  /* Dark gap ring between gradient and image */
   &::after {
     content: "";
     position: absolute;
-    inset: -25px;
+    inset: -4px;
     border-radius: 50%;
-    background: radial-gradient(
-      circle,
-      rgba(16, 237, 204, 0.25) 0%,
-      transparent 70%
-    );
-    animation: ${pulseGlow} 3s ease-in-out infinite;
-    z-index: -1;
+    background: #0a0a14;
+    z-index: 1;
+    box-shadow: inset 0 0 20px rgba(133, 76, 230, 0.15);
+  }
+
+  &:hover {
+    transform: scale(1.03);
   }
 
   @media (max-width: 960px) {
-    width: clamp(220px, 45vw, 300px);
-    height: clamp(220px, 45vw, 300px);
+    width: clamp(200px, 42vw, 280px);
+    height: clamp(200px, 42vw, 280px);
   }
+`;
+
+export const ImgInner = styled.div`
+  position: relative;
+  z-index: 2;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  border-radius: 50%;
+  background: #0a0a14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow:
+    0 0 30px rgba(133, 76, 230, 0.15),
+    0 0 60px rgba(0, 245, 255, 0.05);
 `;
 
 export const Img = styled.img`
@@ -171,112 +182,88 @@ export const Img = styled.img`
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  border: 6px solid #0f0e17;
-  transition: transform 0.4s ease;
-  position: relative;
-  z-index: 2;
+  transition:
+    transform 0.5s ease,
+    filter 0.4s ease;
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.06);
+    filter: brightness(1.08);
   }
 `;
 
-// Simple fade in
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* GlowDot — kept for export compatibility but no longer used */
+export const GlowDot = styled.div`
+  display: none;
 `;
 
+/* ── Text content ── */
 export const GreetingTag = styled.div`
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(16, 237, 204, 0.1);
-  border: 2px solid rgba(16, 237, 204, 0.3);
-  border-radius: 50px;
-  padding: 8px 20px;
-  font-size: 15px;
+  background: rgba(133, 76, 230, 0.1);
+  border: 1.5px solid rgba(133, 76, 230, 0.4);
+  border-radius: 100px;
+  padding: 7px 18px;
+  font-size: 14px;
   font-weight: 600;
-  color: #10edcc;
+  color: #c084fc;
   width: fit-content;
-  animation: ${fadeIn} 0.6s ease-out;
-  margin-bottom: 4px;
+  animation: ${fadeUp} 0.5s ease-out both;
+  letter-spacing: 0.3px;
 
   &::before {
     content: "👋";
-    font-size: 18px;
+    font-size: 16px;
   }
 
   @media (max-width: 640px) {
     font-size: 13px;
-    padding: 7px 16px;
+    padding: 6px 14px;
   }
 `;
 
 export const Title = styled.h1`
   font-weight: 800;
-  font-size: 40px;
+  font-size: clamp(36px, 4.5vw, 54px);
   color: ${({ theme }) => theme.text_primary};
-  line-height: 1.2;
+  line-height: 1.15;
   margin: 0;
-  animation: ${fadeIn} 0.8s ease-out 0.2s both;
-
-  @media (max-width: 960px) {
-    text-align: center;
-  }
-
-  @media (max-width: 640px) {
-    font-size: 30px;
-  }
+  animation: ${fadeUp} 0.5s ease-out 0.1s both;
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  letter-spacing: -0.5px;
 `;
 
 export const NameHighlight = styled.span`
-  background: linear-gradient(135deg, #10edcc, #b248ec, #ff006e);
+  background: linear-gradient(135deg, #00f5ff 0%, #854ce6 50%, #ff006e 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   display: inline-block;
-  position: relative;
 `;
 
 export const TextLoop = styled.div`
   font-weight: 600;
-  font-size: 26px;
+  font-size: clamp(18px, 2.2vw, 24px);
   display: flex;
   gap: 10px;
   color: ${({ theme }) => theme.text_primary};
   align-items: center;
-  margin: 0;
-  animation: ${fadeIn} 0.8s ease-out 0.4s both;
+  animation: ${fadeUp} 0.5s ease-out 0.2s both;
 
   @media (max-width: 960px) {
     justify-content: center;
   }
-
   @media (max-width: 640px) {
-    font-size: 20px;
     flex-wrap: wrap;
-  }
-`;
-
-const colorShift = keyframes`
-  0%, 100% { 
-    background-position: 0% 50%;
-  }
-  50% { 
-    background-position: 100% 50%;
+    justify-content: center;
   }
 `;
 
 export const Span = styled.span`
-  background: linear-gradient(135deg, #10edcc, #b248ec, #ff006e, #00f5ff);
-  background-size: 200% 200%;
+  background: linear-gradient(135deg, #00f5ff, #854ce6, #ff006e, #00f5ff);
+  background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -285,78 +272,75 @@ export const Span = styled.span`
 `;
 
 export const SubTitle = styled.p`
-  font-size: 15px;
-  line-height: 1.6;
-  margin: 8px 0 18px 0;
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: 1.75;
   color: ${({ theme }) => theme.text_secondary};
-  max-width: 560px;
-  animation: ${fadeIn} 0.8s ease-out 0.6s both;
+  max-width: 520px;
+  animation: ${fadeUp} 0.5s ease-out 0.3s both;
 
   @media (max-width: 960px) {
     text-align: center;
-    margin: 8px auto 18px auto;
-  }
-
-  @media (max-width: 640px) {
-    font-size: 14px;
-    line-height: 1.55;
+    max-width: 500px;
   }
 `;
 
-// 🔥 Dynamic Stats Row
+/* ── Stats ── */
 export const StatsRow = styled.div`
   display: flex;
-  gap: 35px;
-  margin: 0 0 20px 0;
-  animation: ${fadeIn} 0.8s ease-out 0.7s both;
+  gap: 0;
+  margin: 4px 0 8px;
+  animation: ${fadeUp} 0.5s ease-out 0.4s both;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  width: fit-content;
+  overflow: hidden;
 
   @media (max-width: 960px) {
-    justify-content: center;
-  }
-
-  @media (max-width: 640px) {
-    gap: 28px;
-  }
-`;
-
-const countUp = keyframes`
-  from {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
+    align-self: center;
   }
 `;
 
 export const StatItem = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  animation: ${countUp} 0.5s ease-out;
-  animation-delay: ${(props) => props.delay || "0s"};
-  animation-fill-mode: both;
+  align-items: center;
+  gap: 2px;
+  padding: 14px 28px;
+  position: relative;
+
+  &:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.08);
+  }
 
   .number {
-    font-size: 30px;
+    font-size: 26px;
     font-weight: 800;
-    background: linear-gradient(135deg, #10edcc, #b248ec);
+    background: linear-gradient(135deg, #00f5ff, #854ce6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    font-family: "Space Grotesk", sans-serif;
     line-height: 1;
   }
 
   .label {
-    font-size: 13px;
+    font-size: 12px;
     color: ${({ theme }) => theme.text_secondary};
     font-weight: 500;
+    letter-spacing: 0.3px;
   }
 
   @media (max-width: 640px) {
+    padding: 12px 20px;
     .number {
-      font-size: 26px;
+      font-size: 22px;
     }
     .label {
       font-size: 11px;
@@ -364,17 +348,17 @@ export const StatItem = styled.div`
   }
 `;
 
+/* ── Buttons ── */
 export const ButtonGroup = styled.div`
   display: flex;
-  gap: 16px;
+  gap: 14px;
   align-items: center;
-  margin: 0 0 18px 0;
-  animation: ${fadeIn} 0.8s ease-out 0.8s both;
+  animation: ${fadeUp} 0.5s ease-out 0.5s both;
 
   @media (max-width: 640px) {
     flex-direction: column;
     width: 100%;
-    gap: 12px;
+    gap: 10px;
   }
 `;
 
@@ -382,20 +366,22 @@ export const ResumeButton = styled.a`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 9px;
   text-decoration: none;
-  padding: 14px 32px;
-  color: #0f0e17;
-  background: linear-gradient(135deg, #10edcc, #00f5ff);
-  border-radius: 50px;
+  padding: 13px 28px;
+  color: #0a0a14;
+  background: linear-gradient(135deg, #00f5ff, #854ce6);
+  border-radius: 12px;
   font-size: 15px;
   font-weight: 700;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 25px rgba(16, 237, 204, 0.4);
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 20px rgba(133, 76, 230, 0.35);
+  letter-spacing: 0.2px;
 
   &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 35px rgba(16, 237, 204, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(133, 76, 230, 0.5);
+    filter: brightness(1.05);
   }
 
   &:active {
@@ -404,8 +390,7 @@ export const ResumeButton = styled.a`
 
   @media (max-width: 640px) {
     width: 100%;
-    padding: 13px 30px;
-    font-size: 15px;
+    padding: 13px 24px;
   }
 `;
 
@@ -413,35 +398,35 @@ export const SecondaryButton = styled.a`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 9px;
   text-decoration: none;
-  padding: 14px 32px;
-  color: #10edcc;
-  background: rgba(16, 237, 204, 0.1);
-  border: 2px solid #10edcc;
-  border-radius: 50px;
+  padding: 13px 28px;
+  color: ${({ theme }) => theme.text_primary};
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
   font-size: 15px;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
+  letter-spacing: 0.2px;
 
   &:hover {
-    background: rgba(16, 237, 204, 0.2);
-    transform: translateY(-3px);
-    box-shadow: 0 0 25px rgba(16, 237, 204, 0.3);
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
   }
 
   @media (max-width: 640px) {
     width: 100%;
-    padding: 13px 30px;
-    font-size: 15px;
+    padding: 13px 24px;
   }
 `;
 
+/* ── Social Icons ── */
 export const SocialLinks = styled.div`
   display: flex;
-  gap: 16px;
-  margin-top: 0;
-  animation: ${fadeIn} 0.8s ease-out 1s both;
+  gap: 10px;
+  animation: ${fadeUp} 0.5s ease-out 0.6s both;
 
   @media (max-width: 960px) {
     justify-content: center;
@@ -452,25 +437,26 @@ export const SocialIcon = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 46px;
-  height: 46px;
-  background: rgba(16, 237, 204, 0.1);
-  border: 2px solid rgba(16, 237, 204, 0.3);
-  border-radius: 50%;
-  color: #10edcc;
-  font-size: 20px;
-  transition: all 0.3s ease;
+  width: 42px;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: ${({ theme }) => theme.text_secondary};
+  font-size: 18px;
+  transition: all 0.25s ease;
 
   &:hover {
-    background: rgba(16, 237, 204, 0.2);
-    border-color: #10edcc;
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(16, 237, 204, 0.4);
+    background: rgba(133, 76, 230, 0.15);
+    border-color: rgba(133, 76, 230, 0.5);
+    color: #c084fc;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 16px rgba(133, 76, 230, 0.25);
   }
 
   @media (max-width: 640px) {
-    width: 44px;
-    height: 44px;
-    font-size: 19px;
+    width: 40px;
+    height: 40px;
+    font-size: 17px;
   }
 `;

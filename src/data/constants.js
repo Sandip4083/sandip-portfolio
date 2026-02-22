@@ -1,6 +1,8 @@
+import KIITLogo from "../images/KIIT-logo.png";
+
 export const Bio = {
   name: "Sandip Kumar Sah",
-  roles: ["Programmer", "Full-Stack Developer"],
+  roles: ["Programmer", "Full-Stack[MERN] Developer"],
   description:
     "I'm a motivated and adaptable individual, passionate about learning and committed to delivering quality results with a positive, growth-oriented mindset.",
   github: "https://github.com/Sandip4083",
@@ -202,7 +204,7 @@ export const experiences = [];
 export const education = [
   {
     id: 0,
-    img: "https://kiit.ac.in/grp/KIIT-logo.png",
+    img: KIITLogo,
     school: "Kalinga Institute of Industrial Technology[KiiT], Bhubaneswar",
     date: "Oct 2022 - May 2026",
     grade: "8.74 CGPA",
@@ -234,7 +236,7 @@ export const projects = [
     tags: ["PHP", "HTML", "CSS", "MySQL"],
     category: "web app",
     github: "https://sandip4083.github.io/smart-ordering-and-billing/",
-    webapp: "https://sandip4083.github.io/smart-ordering-and-billing/",
+    //webapp: "https://sandip4083.github.io/smart-ordering-and-billing/",
   },
   {
     id: 102,
@@ -246,7 +248,7 @@ export const projects = [
       "https://github.com/Sandip4083/DiabetesCare-AI/blob/main/image.png?raw=true",
     tags: ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
     category: "Machine Learning",
-    github: "https://diabetescare-ai.onrender.com",
+    github: "https://sandip4083.github.io/DiabetesCare-AI/",
     webapp: "https://diabetescare-ai.onrender.com",
   },
   {
@@ -260,7 +262,7 @@ export const projects = [
     tags: ["Python", "Pygame", "AI", "Minimax"],
     category: "AI Game",
     github: "https://sandip4083.github.io/TicTacToe-AI/",
-    webapp: "https://sandip4083.github.io/TicTacToe-AI/",
+    //webapp: "https://sandip4083.github.io/TicTacToe-AI/",
   },
   {
     id: 104,
@@ -272,7 +274,7 @@ export const projects = [
       "https://github.com/user-attachments/assets/fc5f25eb-cb77-4b16-9f71-2e7f8d7443eb",
     tags: ["Python", "Streamlit", "AI", "Pathfinding", "Game Development"],
     category: "AI Game",
-    github: "https://snake-ai-w4ta.onrender.com",
+    github: "https://sandip4083.github.io/snake-ai/",
     webapp: "https://snake-ai-w4ta.onrender.com",
   },
 
@@ -300,6 +302,6 @@ export const projects = [
     tags: ["Flutter", "Dart", "Local Notifications", "SharedPreferences"],
     category: "mobile app",
     github: "https://sandip4083.github.io/RemindGo_App/",
-    webapp: "https://sandip4083.github.io/RemindGo_App/",
+    //webapp: "https://sandip4083.github.io/RemindGo_App/",
   },
 ];

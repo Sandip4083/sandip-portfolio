@@ -1,252 +1,242 @@
 import { useState } from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { projects } from "../../data/constants";
 import ProjectCard from "../Cards/ProjectCards";
 
 const Container = styled.div`
-  background: linear-gradient(
-    135deg,
-    rgba(15, 14, 23, 1) 0%,
-    rgba(23, 23, 33, 1) 50%,
-    rgba(15, 14, 23, 1) 100%
-  );
+  background: #0a0a14;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   position: relative;
   z-index: 1;
-  padding: 60px 20px 100px 20px;
+  padding: 80px 24px 100px;
   overflow: hidden;
 
   &::before {
     content: "";
     position: absolute;
-    top: 10%;
-    right: -10%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(
-      circle,
-      rgba(0, 245, 255, 0.08) 0%,
-      transparent 70%
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(133, 76, 230, 0.45),
+      transparent
     );
-    border-radius: 50%;
-    filter: blur(100px);
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 20%;
-    left: -10%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(
-      circle,
-      rgba(255, 0, 110, 0.06) 0%,
-      transparent 70%
-    );
-    border-radius: 50%;
-    filter: blur(100px);
   }
 
   @media (max-width: 960px) {
-    padding: 40px 16px 80px 16px;
+    padding: 60px 20px 80px;
   }
 `;
 
 const Wrapper = styled.div`
-  position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   width: 100%;
   max-width: 1350px;
-  padding: 10px 0px 100px 0;
-  gap: 12px;
+  gap: 16px;
   z-index: 1;
-
-  @media (max-width: 960px) {
-    flex-direction: column;
-  }
 `;
 
-const gradientText = keyframes`
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+const SectionLabel = styled.div`
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #a78bfa;
+  background: rgba(133, 76, 230, 0.09);
+  border: 1px solid rgba(133, 76, 230, 0.25);
+  padding: 5px 18px;
+  border-radius: 100px;
 `;
 
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
-const Title = styled.div`
-  font-size: 56px;
+const Title = styled.h2`
+  font-size: clamp(32px, 4vw, 46px);
   text-align: center;
   font-weight: 800;
-  margin-top: 20px;
-  letter-spacing: 4px;
-  background: linear-gradient(135deg, #00f5ff 0%, #ff006e 50%, #b794f6 100%);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: ${gradientText} 4s ease infinite, ${fadeIn} 0.8s ease-out;
+  color: ${({ theme }) => theme.text_primary};
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  letter-spacing: -0.5px;
+  margin: 0;
+  line-height: 1.15;
 
-  @media (max-width: 768px) {
-    margin-top: 12px;
-    font-size: 40px;
-    letter-spacing: 2px;
+  span {
+    background: linear-gradient(135deg, #a78bfa 0%, #ff006e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  @media (max-width: 640px) {
+    font-size: clamp(26px, 7vw, 36px);
   }
 `;
 
-const Desc = styled.div`
-  font-size: 18px;
+const Desc = styled.p`
+  font-size: 15.5px;
   text-align: center;
-  max-width: 600px;
+  max-width: 480px;
   color: ${({ theme }) => theme.text_secondary};
-  line-height: 1.6;
-  margin-top: 30px;
-  animation: ${fadeIn} 0.8s ease-out 0.2s both;
-
-  @media (max-width: 768px) {
-    margin-top: 12px;
-    font-size: 16px;
-  }
+  line-height: 1.7;
+  margin: 0;
 `;
 
-const ToggleButtonGroup = styled.div`
+const FilterBar = styled.div`
   display: flex;
-  border: 2px solid rgba(0, 245, 255, 0.3);
-  background: rgba(15, 14, 23, 0.8);
-  backdrop-filter: blur(10px);
-  border-radius: 50px;
-  padding: 6px;
-  margin: 30px 0px;
-  box-shadow: 0 8px 32px rgba(0, 245, 255, 0.15);
-  animation: ${fadeIn} 0.8s ease-out 0.4s both;
-
-  @media (max-width: 768px) {
-    flex-wrap: wrap;
-    gap: 6px;
-    justify-content: center;
-    padding: 8px;
-    border-radius: 25px;
-    font-size: 12px;
-  }
+  gap: 6px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 5px;
 `;
 
-const ToggleButton = styled.button`
+const FilterBtn = styled.button`
   border: none;
   outline: none;
   background: ${({ active }) =>
-    active ? "linear-gradient(135deg, #00f5ff, #ff006e)" : "transparent"};
-  padding: 10px 20px;
-  border-radius: 50px;
+    active ? "linear-gradient(135deg, #854ce6, #c026d3)" : "transparent"};
+  padding: 8px 18px;
+  border-radius: 10px;
   cursor: pointer;
-  color: ${({ active }) => (active ? "#000" : "#00f5ff")};
-  font-weight: ${({ active }) => (active ? "700" : "600")};
-  font-size: 16px;
-  transition: all 0.3s ease;
+  color: ${({ active }) => (active ? "#fff" : "rgba(255,255,255,0.45)")};
+  font-weight: ${({ active }) => (active ? "700" : "500")};
+  font-size: 13.5px;
+  transition: all 0.2s ease;
   white-space: nowrap;
-
-  ${({ active }) =>
-    active &&
-    `
-    box-shadow: 0 5px 15px rgba(0, 245, 255, 0.4);
-  `}
+  box-shadow: ${({ active }) =>
+    active ? "0 4px 14px rgba(133, 76, 230, 0.35)" : "none"};
 
   &:hover {
+    color: ${({ active }) => (active ? "#fff" : "rgba(255,255,255,0.75)")};
     background: ${({ active }) =>
       active
-        ? "linear-gradient(135deg, #00f5ff, #ff006e)"
-        : "rgba(0, 245, 255, 0.1)"};
-    transform: scale(1.02);
+        ? "linear-gradient(135deg, #854ce6, #c026d3)"
+        : "rgba(133, 76, 230, 0.1)"};
   }
 
-  @media (max-width: 768px) {
-    padding: 8px 14px;
-    border-radius: 10px;
-    font-size: 11px;
+  @media (max-width: 640px) {
+    padding: 7px 13px;
+    font-size: 12.5px;
+    border-radius: 8px;
   }
 `;
 
 const CardContainer = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 28px;
+  align-items: flex-start;
+  gap: 22px;
   flex-wrap: wrap;
-  animation: ${fadeIn} 0.8s ease-out 0.6s both;
+  margin-top: 36px;
+  width: 100%;
 `;
+
+const BottomCTA = styled.div`
+  margin-top: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+`;
+
+const CTAText = styled.p`
+  font-size: 14.5px;
+  color: ${({ theme }) => theme.text_secondary};
+`;
+
+const CTABtn = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 12px;
+  background: rgba(133, 76, 230, 0.1);
+  border: 1.5px solid rgba(133, 76, 230, 0.35);
+  color: #a78bfa;
+  font-size: 14.5px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.22s ease;
+
+  &:hover {
+    background: rgba(133, 76, 230, 0.2);
+    border-color: rgba(133, 76, 230, 0.6);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(133, 76, 230, 0.25);
+  }
+`;
+
+const FILTERS = [
+  { label: "All", value: "all" },
+  { label: "Web Apps", value: "web app" },
+  { label: "Mobile", value: "mobile app" },
+  { label: "ML / AI", value: "Machine Learning" },
+  { label: "AI Games", value: "AI Game" },
+];
 
 const Projects = ({ openModal, setOpenModal }) => {
   const [toggle, setToggle] = useState("all");
 
+  const filtered =
+    toggle === "all" ? projects : projects.filter((p) => p.category === toggle);
+
   return (
     <Container id="projects">
       <Wrapper>
-        <Title>Projects</Title>
+        <SectionLabel>Portfolio</SectionLabel>
+        <Title>
+          My Work &amp; <span>Projects</span>
+        </Title>
         <Desc>
-          I have worked on a wide range of projects. From web apps to mobile
-          apps. Here are some of my projects.
+          A curated showcase of what I've built — from web apps and mobile apps
+          to AI &amp; ML projects.
         </Desc>
 
-        <ToggleButtonGroup>
-          <ToggleButton
-            active={toggle === "all"}
-            onClick={() => setToggle("all")}
-          >
-            All
-          </ToggleButton>
-          <ToggleButton
-            active={toggle === "web app"}
-            onClick={() => setToggle("web app")}
-          >
-            Web Apps
-          </ToggleButton>
-          <ToggleButton
-            active={toggle === "mobile app"}
-            onClick={() => setToggle("mobile app")}
-          >
-            Mobile Apps
-          </ToggleButton>
-          <ToggleButton
-            active={toggle === "Machine Learning"}
-            onClick={() => setToggle("Machine Learning")}
-          >
-            ML/AI
-          </ToggleButton>
-          <ToggleButton
-            active={toggle === "AI Game"}
-            onClick={() => setToggle("AI Game")}
-          >
-            AI Games
-          </ToggleButton>
-        </ToggleButtonGroup>
+        <FilterBar>
+          {FILTERS.map(({ label, value }) => (
+            <FilterBtn
+              key={value}
+              active={toggle === value}
+              onClick={() => setToggle(value)}
+            >
+              {label}
+            </FilterBtn>
+          ))}
+        </FilterBar>
 
         <CardContainer>
-          {projects
-            .filter((item) => toggle === "all" || item.category === toggle)
-            .map((project) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                openModal={openModal}
-                setOpenModal={setOpenModal}
-              />
-            ))}
+          {filtered.map((project) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              openModal={openModal}
+              setOpenModal={setOpenModal}
+            />
+          ))}
         </CardContainer>
+
+        <BottomCTA>
+          <CTAText>
+            Want to see more? All my projects are available on GitHub.
+          </CTAText>
+          <CTABtn
+            href="https://github.com/Sandip4083"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🚀 View All Projects on GitHub
+          </CTABtn>
+        </BottomCTA>
       </Wrapper>
     </Container>
   );

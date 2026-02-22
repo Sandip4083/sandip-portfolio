@@ -1,6 +1,11 @@
 import { useState } from "react";
 import styled, { css, keyframes } from "styled-components";
 
+const fadeIn = keyframes`
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+`;
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -8,11 +13,11 @@ const Container = styled.div`
   position: relative;
   z-index: 1;
   align-items: center;
-  padding: 60px 20px 100px 20px;
+  padding: 80px 24px 100px;
   overflow: hidden;
 
   @media (max-width: 960px) {
-    padding: 40px 16px 80px 16px;
+    padding: 60px 20px 80px;
   }
 `;
 
@@ -24,253 +29,211 @@ const Wrapper = styled.div`
   flex-direction: column;
   width: 100%;
   max-width: 1100px;
-  gap: 20px;
+  gap: 16px;
   z-index: 1;
 `;
 
-const gradientText = keyframes`
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+const SectionLabel = styled.div`
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.22);
+  padding: 6px 18px;
+  border-radius: 100px;
 `;
 
-const Title = styled.div`
-  font-size: 52px;
+const Title = styled.h2`
+  font-size: clamp(36px, 4vw, 48px);
   text-align: center;
   font-weight: 800;
-  margin-bottom: 10px;
-  letter-spacing: 2px;
-  background: linear-gradient(135deg, #00f5ff 0%, #ff006e 50%, #b794f6 100%);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: ${gradientText} 4s ease infinite;
+  color: ${({ theme }) => theme.text_primary};
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  letter-spacing: -0.5px;
+  margin: 0;
 
-  @media (max-width: 768px) {
-    font-size: 38px;
+  span {
+    background: linear-gradient(135deg, #10b981, #00f5ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 `;
 
-const Desc = styled.div`
-  font-size: 18px;
+const Desc = styled.p`
+  font-size: 16px;
   text-align: center;
-  max-width: 600px;
+  max-width: 500px;
   color: ${({ theme }) => theme.text_secondary};
-  margin-bottom: 30px;
-  line-height: 1.6;
-
-  @media (max-width: 768px) {
-    font-size: 16px;
-  }
+  margin: 0;
+  line-height: 1.7;
 `;
 
 const ContactForm = styled.form`
   width: 95%;
-  max-width: 650px;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(
-    135deg,
-    rgba(15, 14, 23, 0.95) 0%,
-    rgba(23, 23, 33, 0.9) 100%
-  );
-  backdrop-filter: blur(30px);
-  padding: 45px 40px;
-  border-radius: 25px;
-  gap: 22px;
-  border: 2px solid rgba(0, 245, 255, 0.3);
-  box-shadow: 0 5px 20px rgba(0, 245, 255, 0.2);
+  background: rgba(17, 17, 32, 0.9);
+  backdrop-filter: blur(24px);
+  padding: 40px 36px;
+  border-radius: 24px;
+  gap: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 32px;
 
-  @media (max-width: 768px) {
-    padding: 35px 25px;
-    gap: 20px;
+  @media (max-width: 640px) {
+    padding: 28px 22px;
+    gap: 18px;
   }
 `;
 
 const ContactTitle = styled.div`
-  font-size: 30px;
-  margin-bottom: 10px;
+  font-size: 22px;
   font-weight: 700;
-  background: linear-gradient(135deg, #00f5ff, #ff006e);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-align: center;
-
-  @media (max-width: 768px) {
-    font-size: 26px;
-  }
+  color: ${({ theme }) => theme.text_primary};
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  margin-bottom: 4px;
 `;
 
-const InputWrapper = styled.div`
-  position: relative;
+const InputGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+`;
 
-  label {
-    position: absolute;
-    left: 18px;
-    top: -10px;
-    background: linear-gradient(135deg, #00f5ff, #0080ff);
-    color: white;
-    padding: 2px 10px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: 600;
-    z-index: 1;
-    letter-spacing: 0.5px;
-  }
+const Label = styled.label`
+  font-size: 12.5px;
+  font-weight: 600;
+  color: ${({ theme }) => theme.text_secondary};
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 `;
 
 const ContactInput = styled.input`
   width: 100%;
-  background: rgba(10, 10, 20, 0.6);
-  border: 2px solid rgba(0, 245, 255, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.09);
   outline: none;
-  font-size: 16px;
+  font-size: 15px;
   color: ${({ theme }) => theme.text_primary};
-  border-radius: 15px;
-  padding: 16px 20px;
-  transition: all 0.25s ease;
+  border-radius: 12px;
+  padding: 13px 16px;
+  transition: all 0.22s ease;
+  font-family: inherit;
 
   &::placeholder {
-    color: transparent;
+    color: ${({ theme }) => theme.text_secondary};
+    opacity: 0.5;
   }
 
   &:focus {
-    border: 2px solid #00f5ff;
-    background: rgba(0, 245, 255, 0.05);
-    box-shadow: 0 0 12px rgba(0, 245, 255, 0.2);
+    border-color: rgba(16, 185, 129, 0.5);
+    background: rgba(16, 185, 129, 0.04);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
   }
 
-  @media (max-width: 768px) {
-    font-size: 15px;
-    padding: 14px 18px;
+  @media (max-width: 640px) {
+    font-size: 14px;
+    padding: 12px 14px;
   }
 `;
 
 const ContactInputMessage = styled.textarea`
   width: 100%;
-  background: rgba(10, 10, 20, 0.6);
-  border: 2px solid rgba(0, 245, 255, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.09);
   outline: none;
-  font-size: 16px;
+  font-size: 15px;
   color: ${({ theme }) => theme.text_primary};
-  border-radius: 15px;
-  padding: 16px 20px;
-  transition: all 0.25s ease;
+  border-radius: 12px;
+  padding: 13px 16px;
+  transition: all 0.22s ease;
   resize: vertical;
-  min-height: 140px;
+  min-height: 130px;
   font-family: inherit;
 
   &::placeholder {
-    color: transparent;
+    color: ${({ theme }) => theme.text_secondary};
+    opacity: 0.5;
   }
 
   &:focus {
-    border: 2px solid #00f5ff;
-    background: rgba(0, 245, 255, 0.05);
-    box-shadow: 0 0 12px rgba(0, 245, 255, 0.2);
+    border-color: rgba(16, 185, 129, 0.5);
+    background: rgba(16, 185, 129, 0.04);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
   }
 
-  @media (max-width: 768px) {
-    font-size: 15px;
-    padding: 14px 18px;
-    min-height: 120px;
+  @media (max-width: 640px) {
+    font-size: 14px;
+    padding: 12px 14px;
+    min-height: 110px;
   }
 `;
 
 const ContactButton = styled.button`
   width: 100%;
   text-align: center;
-  background: linear-gradient(135deg, #00f5ff 0%, #0080ff 100%);
-  padding: 17px 24px;
-  border-radius: 15px;
+  background: linear-gradient(135deg, #10b981, #00f5ff);
+  padding: 15px 24px;
+  border-radius: 12px;
   border: none;
-  color: white;
-  font-size: 17px;
+  color: #0a0a14;
+  font-size: 16px;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.25s ease;
-  margin-top: 10px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  box-shadow: 0 5px 20px rgba(0, 245, 255, 0.3);
+  transition: all 0.22s ease;
+  letter-spacing: 0.3px;
+  margin-top: 6px;
 
-  &:hover {
+  &:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 7px 25px rgba(0, 245, 255, 0.4);
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.35);
+    filter: brightness(1.05);
   }
 
-  &:active {
+  &:active:not(:disabled) {
     transform: translateY(0);
   }
 
   &:disabled {
-    background: linear-gradient(135deg, #555, #777);
-    cursor: not-allowed;
     opacity: 0.6;
-    transform: none;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 16px;
-    padding: 15px 20px;
-  }
-`;
-
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    cursor: not-allowed;
   }
 `;
 
 const MessageBox = styled.div`
-  margin-top: 10px;
-  padding: 15px 20px;
-  border-radius: 15px;
-  font-size: 15px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 14.5px;
   font-weight: 600;
   animation: ${fadeIn} 0.3s ease;
   display: flex;
   align-items: center;
   gap: 10px;
 
-  &::before {
-    font-size: 22px;
-  }
-
   ${({ success }) =>
     success
       ? css`
-          color: #0f5132;
-          background: linear-gradient(135deg, #d1e7dd 0%, #a3cfbb 100%);
-          border: 2px solid #00f5ff;
-          box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+          color: #065f46;
+          background: rgba(16, 185, 129, 0.12);
+          border: 1.5px solid rgba(16, 185, 129, 0.35);
 
           &::before {
             content: "✅";
           }
         `
       : css`
-          color: #842029;
-          background: linear-gradient(135deg, #f8d7da 0%, #f1aeb5 100%);
-          border: 2px solid #ff006e;
-          box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
+          color: #7f1d1d;
+          background: rgba(220, 38, 38, 0.1);
+          border: 1.5px solid rgba(220, 38, 38, 0.35);
 
           &::before {
             content: "⚠️";
           }
         `}
-
-  @media (max-width: 768px) {
-    font-size: 14px;
-    padding: 13px 16px;
-  }
 `;
 
 const Contact = () => {
@@ -296,30 +259,25 @@ const Contact = () => {
       const response = await fetch("https://formspree.io/f/mgvlbwnb", {
         method: "POST",
         body: formData,
-        headers: {
-          Accept: "application/json",
-        },
+        headers: { Accept: "application/json" },
       });
 
       if (response.ok) {
         setMessageType("success");
-        setMessageText("Message sent successfully! I'll get back to you soon.");
+        setMessageText("Message sent! I'll get back to you soon. 🎉");
         e.target.reset();
       } else {
-        let errText = "Failed to send message. Please try again!";
+        let errText = "Failed to send. Please try again.";
         try {
           const data = await response.json();
-          if (data && data.error) errText = data.error;
-        } catch (err) {
-          // ignore
-        }
+          if (data?.error) errText = data.error;
+        } catch {}
         setMessageType("error");
         setMessageText(errText);
       }
     } catch (err) {
-      console.error("Formspree Error:", err);
       setMessageType("error");
-      setMessageText("Connection error. Please check your internet.");
+      setMessageText("Connection error. Check your internet and try again.");
     } finally {
       setIsSending(false);
       clearMessageAfter(6000);
@@ -329,36 +287,59 @@ const Contact = () => {
   return (
     <Container id="contact">
       <Wrapper>
-        <Title>Get In Touch</Title>
+        <SectionLabel>Contact</SectionLabel>
+        <Title>
+          Get In <span>Touch</span>
+        </Title>
         <Desc>
-          Have a project in mind or want to collaborate? Drop me a message!
+          Have a project in mind or want to collaborate? Drop me a message and
+          I'll respond promptly.
         </Desc>
 
         <ContactForm onSubmit={handleSubmit}>
-          <ContactTitle>Send Message</ContactTitle>
+          <ContactTitle>Send a Message ✉️</ContactTitle>
 
-          <InputWrapper>
-            <label>EMAIL</label>
-            <ContactInput type="email" name="email" required />
-          </InputWrapper>
+          <InputGroup>
+            <Label>Your Email</Label>
+            <ContactInput
+              type="email"
+              name="email"
+              placeholder="you@example.com"
+              required
+            />
+          </InputGroup>
 
-          <InputWrapper>
-            <label>NAME</label>
-            <ContactInput type="text" name="name" required />
-          </InputWrapper>
+          <InputGroup>
+            <Label>Your Name</Label>
+            <ContactInput
+              type="text"
+              name="name"
+              placeholder="John Doe"
+              required
+            />
+          </InputGroup>
 
-          <InputWrapper>
-            <label>SUBJECT</label>
-            <ContactInput type="text" name="subject" />
-          </InputWrapper>
+          <InputGroup>
+            <Label>Subject</Label>
+            <ContactInput
+              type="text"
+              name="subject"
+              placeholder="What's this about?"
+            />
+          </InputGroup>
 
-          <InputWrapper>
-            <label>MESSAGE</label>
-            <ContactInputMessage rows="5" name="message" required />
-          </InputWrapper>
+          <InputGroup>
+            <Label>Message</Label>
+            <ContactInputMessage
+              rows="5"
+              name="message"
+              placeholder="Tell me about your project..."
+              required
+            />
+          </InputGroup>
 
           <ContactButton type="submit" disabled={isSending}>
-            {isSending ? "Sending..." : "Send Message"}
+            {isSending ? "Sending..." : "Send Message →"}
           </ContactButton>
 
           {messageText && (

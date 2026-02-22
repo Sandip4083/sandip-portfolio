@@ -1,20 +1,21 @@
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
+import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import EmailIcon from "@mui/icons-material/Email";
 import styled, { keyframes } from "styled-components";
 import { Bio } from "../../data/constants";
 
-const FooterContainer = styled.div`
+const shimmer = keyframes`
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+`;
+
+const FooterContainer = styled.footer`
   width: 100%;
-  padding: 3rem 0 2rem 0;
-  display: flex;
-  justify-content: center;
-  background: linear-gradient(
-    180deg,
-    rgba(15, 14, 23, 1) 0%,
-    rgba(10, 10, 20, 1) 100%
-  );
+  background: linear-gradient(180deg, #060610 0%, #04040c 100%);
   position: relative;
   overflow: hidden;
 
@@ -27,201 +28,347 @@ const FooterContainer = styled.div`
     height: 2px;
     background: linear-gradient(
       90deg,
-      transparent,
+      #854ce6,
       #00f5ff,
       #ff006e,
-      #b794f6,
-      transparent
+      #fbbf24,
+      #854ce6
     );
+    background-size: 300% 100%;
+    animation: ${shimmer} 6s ease infinite;
   }
-`;
-
-const FooterWrapper = styled.footer`
-  width: 100%;
-  max-width: 1200px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-  padding: 1rem;
-  color: ${({ theme }) => theme.text_primary};
-  position: relative;
-  z-index: 1;
-`;
-
-const gradientText = keyframes`
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-`;
-
-const Logo = styled.h2`
-  font-weight: 700;
-  font-size: 28px;
-  background: linear-gradient(90deg, #00f5ff 0%, #ff006e 50%, #b794f6 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: ${gradientText} 3s ease infinite;
-  letter-spacing: 1px;
-
-  @media (max-width: 768px) {
-    font-size: 24px;
-  }
-`;
-
-const Nav = styled.nav`
-  width: 100%;
-  max-width: 900px;
-  margin-top: 0.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2.5rem;
-  justify-content: center;
-  text-align: center;
-
-  @media (max-width: 768px) {
-    gap: 1.5rem;
-  }
-`;
-
-const NavLink = styled.a`
-  color: ${({ theme }) => theme.text_primary};
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  position: relative;
 
   &::after {
     content: "";
     position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
+    top: 0;
     left: 50%;
-    background: linear-gradient(90deg, #00f5ff, #ff006e);
-    transition: all 0.3s ease;
     transform: translateX(-50%);
-  }
-
-  &:hover {
-    color: ${({ theme }) => theme.primary};
-    transform: translateY(-2px);
-  }
-
-  &:hover::after {
-    width: 100%;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 1rem;
+    width: 600px;
+    height: 120px;
+    background: radial-gradient(
+      ellipse,
+      rgba(133, 76, 230, 0.08),
+      transparent 70%
+    );
+    pointer-events: none;
   }
 `;
 
-const SocialMediaIcons = styled.div`
+const FooterInner = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 40px 0;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 640px) {
+    padding: 44px 24px 0;
+  }
+`;
+
+const TopSection = styled.div`
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+`;
+
+const BrandCol = styled.div`
   display: flex;
-  margin-top: 1.5rem;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 14px;
 
   @media (max-width: 768px) {
-    gap: 1.5rem;
+    align-items: center;
   }
 `;
 
-const SocialMediaIcon = styled.a`
+const Logo = styled.h2`
+  font-weight: 800;
+  font-size: 26px;
+  background: linear-gradient(135deg, #00f5ff, #854ce6, #ff006e);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: ${shimmer} 4s ease infinite;
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  letter-spacing: -0.3px;
+  margin: 0;
+`;
+
+const Tagline = styled.p`
+  font-size: 14.5px;
+  color: ${({ theme }) => theme.text_secondary};
+  line-height: 1.7;
+  max-width: 280px;
+  margin: 0;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
+`;
+
+const SocialRow = styled.div`
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+`;
+
+const SocialIcon = styled.a`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
-  font-size: 1.8rem;
-  color: ${({ theme }) => theme.text_primary};
-  background: rgba(0, 245, 255, 0.08);
-  border: 2px solid rgba(0, 245, 255, 0.3);
-  border-radius: 50%;
-  transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  color: ${({ theme }) => theme.text_secondary};
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 11px;
+  transition: all 0.22s ease;
+  font-size: 17px;
 
   &:hover {
-    color: ${({ theme }) => theme.primary};
-    background: rgba(0, 245, 255, 0.15);
-    border-color: ${({ theme }) => theme.primary};
-    transform: scale(1.1);
+    color: ${({ hoverColor }) => hoverColor || "#c084fc"};
+    background: ${({ hoverColor }) =>
+      hoverColor ? `${hoverColor}15` : "rgba(133, 76, 230, 0.12)"};
+    border-color: ${({ hoverColor }) =>
+      hoverColor || "rgba(133, 76, 230, 0.4)"};
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px
+      ${({ hoverColor }) =>
+        hoverColor ? `${hoverColor}25` : "rgba(133, 76, 230, 0.2)"};
+  }
+`;
+
+const NavCol = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  @media (max-width: 768px) {
+    align-items: center;
+  }
+`;
+
+const NavColTitle = styled.div`
+  font-size: 11.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: ${({ theme }) => theme.text_primary};
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &::before {
+    content: "";
+    width: 3px;
+    height: 14px;
+    border-radius: 2px;
+    background: linear-gradient(135deg, #00f5ff, #854ce6);
   }
 
   @media (max-width: 768px) {
-    width: 45px;
-    height: 45px;
-    font-size: 1.5rem;
+    &::before {
+      display: none;
+    }
+  }
+`;
+
+const NavLink = styled.a`
+  color: ${({ theme }) => theme.text_secondary};
+  text-decoration: none;
+  font-size: 14.5px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  &:hover {
+    color: #00f5ff;
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 768px) {
+    &:hover {
+      transform: none;
+    }
+  }
+`;
+
+const BottomBar = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 0;
+  gap: 16px;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
   }
 `;
 
 const Copyright = styled.p`
-  margin-top: 2rem;
-  font-size: 1rem;
-  color: ${({ theme }) => theme.text_secondary};
-  text-align: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.3);
+  margin: 0;
 
-  @media (max-width: 768px) {
-    font-size: 0.9rem;
+  span {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 600;
   }
 `;
+
+const BuiltWith = styled.div`
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  span {
+    color: #ff006e;
+    font-size: 14px;
+  }
+`;
+
+const NAV_LINKS = [
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
+  { label: "Education", href: "#education" },
+  { label: "Certificates", href: "#certificates" },
+];
 
 function Footer() {
   return (
     <FooterContainer>
-      <FooterWrapper>
-        <Logo>Sandip Kumar Sah</Logo>
+      <FooterInner>
+        <TopSection>
+          <BrandCol>
+            <Logo>Sandip Kumar Sah</Logo>
+            <Tagline>
+              Full Stack Developer & AI Enthusiast crafting elegant digital
+              experiences with clean code.
+            </Tagline>
+            <SocialRow>
+              <SocialIcon
+                href={Bio.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                hoverColor="#fff"
+              >
+                <GitHubIcon style={{ fontSize: 18 }} />
+              </SocialIcon>
+              <SocialIcon
+                href={Bio.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                hoverColor="#0a66c2"
+              >
+                <LinkedInIcon style={{ fontSize: 18 }} />
+              </SocialIcon>
+              <SocialIcon
+                href={Bio.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
+                hoverColor="#1da1f2"
+              >
+                <TwitterIcon style={{ fontSize: 18 }} />
+              </SocialIcon>
+              <SocialIcon
+                href={Bio.insta}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                hoverColor="#e1306c"
+              >
+                <InstagramIcon style={{ fontSize: 18 }} />
+              </SocialIcon>
+              <SocialIcon
+                href={Bio.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                hoverColor="#1877f2"
+              >
+                <FacebookIcon style={{ fontSize: 18 }} />
+              </SocialIcon>
+            </SocialRow>
+          </BrandCol>
 
-        <Nav>
-          <NavLink href="#about">About</NavLink>
-          <NavLink href="#skills">Skills</NavLink>
-          <NavLink href="#experience">Experience</NavLink>
-          <NavLink href="#projects">Projects</NavLink>
-          <NavLink href="#education">Education</NavLink>
-          <NavLink href="#certificates">Certificates</NavLink>
-        </Nav>
+          <NavCol>
+            <NavColTitle>Navigate</NavColTitle>
+            {NAV_LINKS.map(({ label, href }) => (
+              <NavLink key={href} href={href}>
+                {label}
+              </NavLink>
+            ))}
+          </NavCol>
 
-        <SocialMediaIcons>
-          <SocialMediaIcon
-            href={Bio.facebook}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-          >
-            <FacebookIcon />
-          </SocialMediaIcon>
-          <SocialMediaIcon
-            href={Bio.twitter}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Twitter"
-          >
-            <TwitterIcon />
-          </SocialMediaIcon>
-          <SocialMediaIcon
-            href={Bio.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-          >
-            <LinkedInIcon />
-          </SocialMediaIcon>
-          <SocialMediaIcon
-            href={Bio.insta}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-          >
-            <InstagramIcon />
-          </SocialMediaIcon>
-        </SocialMediaIcons>
+          <NavCol>
+            <NavColTitle>Connect</NavColTitle>
+            <NavLink
+              href={Bio.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GitHubIcon style={{ fontSize: 15 }} /> GitHub
+            </NavLink>
+            <NavLink
+              href={Bio.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <LinkedInIcon style={{ fontSize: 15 }} /> LinkedIn
+            </NavLink>
+            <NavLink
+              href={Bio.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <TwitterIcon style={{ fontSize: 15 }} /> Twitter
+            </NavLink>
+            <NavLink href={Bio.insta} target="_blank" rel="noopener noreferrer">
+              <InstagramIcon style={{ fontSize: 15 }} /> Instagram
+            </NavLink>
+            <NavLink href="#contact">
+              <EmailIcon style={{ fontSize: 15 }} /> Contact Me
+            </NavLink>
+          </NavCol>
+        </TopSection>
 
-        <Copyright>
-          © {new Date().getFullYear()} Sandip Kumar Sah • All Rights Reserved
-        </Copyright>
-      </FooterWrapper>
+        <BottomBar>
+          <Copyright>
+            © {new Date().getFullYear()} <span>Sandip Kumar Sah</span> · All
+            Rights Reserved
+          </Copyright>
+          <BuiltWith>
+            Built with <span>❤</span> using React
+          </BuiltWith>
+        </BottomBar>
+      </FooterInner>
     </FooterContainer>
   );
 }

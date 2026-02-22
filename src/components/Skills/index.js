@@ -1,72 +1,80 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { skills } from "../../data/constants";
 
+/* ── Layout ── */
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   position: relative;
   z-index: 1;
-  padding: 40px 20px 80px 20px;
+  padding: 80px 24px 100px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(133, 76, 230, 0.04) 50%,
+    transparent
+  );
 
   @media (max-width: 960px) {
-    padding: 30px 16px 60px 16px;
+    padding: 60px 20px 80px;
   }
 `;
 
 const Wrapper = styled.div`
   position: relative;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   width: 100%;
   max-width: 1100px;
-  gap: 12px;
+  gap: 16px;
   z-index: 1;
-
-  @media (max-width: 960px) {
-    flex-direction: column;
-  }
 `;
 
-const gradientText = keyframes`
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+const SectionLabel = styled.div`
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #854ce6;
+  background: rgba(133, 76, 230, 0.1);
+  border: 1px solid rgba(133, 76, 230, 0.25);
+  padding: 6px 18px;
+  border-radius: 100px;
 `;
 
-export const Title = styled.div`
-  font-size: 52px;
+const Title = styled.h2`
+  font-size: clamp(36px, 4vw, 48px);
   text-align: center;
   font-weight: 800;
-  margin-top: 20px;
-  letter-spacing: 3px;
-  background: linear-gradient(135deg, #00f5ff 0%, #ff006e 50%, #b794f6 100%);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: ${gradientText} 4s ease infinite;
+  color: ${({ theme }) => theme.text_primary};
+  letter-spacing: -0.5px;
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  margin: 0;
+
+  span {
+    background: linear-gradient(135deg, #00f5ff 0%, #854ce6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 
   @media (max-width: 768px) {
-    margin-top: 12px;
-    font-size: 38px;
-    letter-spacing: 2px;
+    font-size: clamp(28px, 6vw, 38px);
   }
 `;
 
-export const Desc = styled.div`
-  font-size: 18px;
+const Desc = styled.p`
+  font-size: 16px;
   text-align: center;
-  max-width: 600px;
+  max-width: 500px;
   color: ${({ theme }) => theme.text_secondary};
-  line-height: 1.6;
-  margin-top: 15px;
+  line-height: 1.7;
+  margin: 0;
 
   @media (max-width: 768px) {
-    font-size: 16px;
+    font-size: 15px;
   }
 `;
 
@@ -74,96 +82,111 @@ const SkillsContainer = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  margin-top: 30px;
-  gap: 20px;
+  margin-top: 40px;
+  gap: 24px;
   justify-content: center;
 `;
 
 const Skill = styled.div`
   width: 100%;
-  max-width: 450px;
-  background: linear-gradient(
-    135deg,
-    rgba(15, 14, 23, 0.95) 0%,
-    rgba(23, 23, 33, 0.9) 100%
-  );
-  backdrop-filter: blur(20px);
+  max-width: 460px;
+  background: rgba(17, 17, 32, 0.8);
   border-radius: 20px;
-  padding: 20px 35px;
-  border: 2px solid rgba(0, 245, 255, 0.3);
-  box-shadow: 0 5px 15px rgba(0, 245, 255, 0.2);
+  padding: 28px 32px;
+  border: 1px solid rgba(133, 76, 230, 0.16);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+
+  &:hover {
+    border-color: rgba(133, 76, 230, 0.4);
+    box-shadow: 0 8px 40px rgba(133, 76, 230, 0.12);
+    transform: translateY(-4px);
+  }
 
   @media (max-width: 768px) {
-    max-width: 400px;
-    padding: 16px 30px;
+    max-width: 380px;
+    padding: 22px 24px;
   }
 
   @media (max-width: 500px) {
-    max-width: 330px;
-    padding: 14px 26px;
+    max-width: 100%;
+    padding: 20px;
   }
 `;
 
-const SkillTitle = styled.h2`
-  font-size: 26px;
+const SkillTitle = styled.h3`
+  font-size: 18px;
   font-weight: 700;
-  background: linear-gradient(135deg, #00f5ff, #ff006e);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 18px;
-  text-align: center;
+  color: ${({ theme }) => theme.text_primary};
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Space Grotesk", "Inter", sans-serif;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 18px;
+    background: linear-gradient(135deg, #00f5ff, #854ce6);
+    border-radius: 3px;
+  }
 `;
 
 const SkillList = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 0;
+  gap: 10px;
 `;
 
 const SkillItem = styled.div`
-  font-size: 15px;
+  font-size: 13.5px;
   font-weight: 500;
-  color: ${({ theme }) => theme.text_primary};
-  background: rgba(0, 245, 255, 0.08);
-  border: 2px solid rgba(0, 245, 255, 0.3);
-  border-radius: 12px;
-  padding: 10px 16px;
+  color: ${({ theme }) => theme.text_secondary};
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  padding: 8px 14px;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 8px;
-  cursor: default;
+  transition: all 0.2s ease;
 
-  @media (max-width: 768px) {
-    font-size: 14px;
-    padding: 9px 14px;
+  &:hover {
+    border-color: rgba(133, 76, 230, 0.4);
+    background: rgba(133, 76, 230, 0.08);
+    color: ${({ theme }) => theme.text_primary};
+    transform: translateY(-2px);
   }
 
-  @media (max-width: 500px) {
-    font-size: 13px;
-    padding: 8px 12px;
+  @media (max-width: 768px) {
+    font-size: 12.5px;
+    padding: 7px 12px;
   }
 `;
 
 const SkillImage = styled.img`
-  width: 24px;
-  height: 24px;
-
-  @media (max-width: 768px) {
-    width: 22px;
-    height: 22px;
-  }
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
 `;
 
 const Skills = () => {
   return (
     <Container id="skills">
       <Wrapper>
-        <Title>Skills & Technologies</Title>
-        <Desc>Here are some of the technologies I've been working with.</Desc>
+        <SectionLabel>Technologies</SectionLabel>
+        <Title>
+          Skills & <span>Expertise</span>
+        </Title>
+        <Desc>
+          Here are the technologies and tools I work with to bring ideas to
+          life.
+        </Desc>
         <SkillsContainer>
           {skills.map((skill, i) => (
             <Skill key={i}>
