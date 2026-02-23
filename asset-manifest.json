@@ -1,14 +1,15 @@
 {
   "files": {
-    "main.css": "/sandip-portfolio/static/css/main.9865eb60.css",
-    "main.js": "/sandip-portfolio/static/js/main.399acb21.js",
+    "main.css": "/sandip-portfolio/static/css/main.7102d398.css",
+    "main.js": "/sandip-portfolio/static/js/main.2c721e3c.js",
     "static/media/sandip.jpg": "/sandip-portfolio/static/media/sandip.7d4331459de5b7219cb7.jpg",
+    "static/media/KIIT-logo.png": "/sandip-portfolio/static/media/KIIT-logo.8a02a55ce6035a9a5345.png",
     "index.html": "/sandip-portfolio/index.html",
-    "main.9865eb60.css.map": "/sandip-portfolio/static/css/main.9865eb60.css.map",
-    "main.399acb21.js.map": "/sandip-portfolio/static/js/main.399acb21.js.map"
+    "main.7102d398.css.map": "/sandip-portfolio/static/css/main.7102d398.css.map",
+    "main.2c721e3c.js.map": "/sandip-portfolio/static/js/main.2c721e3c.js.map"
   },
   "entrypoints": [
-    "static/css/main.9865eb60.css",
-    "static/js/main.399acb21.js"
+    "static/css/main.7102d398.css",
+    "static/js/main.2c721e3c.js"
   ]
 }
