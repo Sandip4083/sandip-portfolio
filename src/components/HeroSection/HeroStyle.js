@@ -23,7 +23,7 @@ export const HeroContainer = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 5px 40px 80px;
+  padding: 13px 40px 80px;
   background:
     radial-gradient(
       ellipse 80% 60% at 50% -10%,

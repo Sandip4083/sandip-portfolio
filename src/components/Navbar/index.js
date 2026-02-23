@@ -60,7 +60,7 @@ const Navbar = () => {
       <NavbarContainer>
         {/* Logo */}
         <NavLogo to="/">
-          <Span>👨‍💻 Sandip</Span>
+          <Span>👨‍💻 Portfolio</Span>
         </NavLogo>
 
         {/* Mobile Hamburger */}
@@ -94,11 +94,10 @@ const Navbar = () => {
             GitHub
           </GitHubButton>
         </ButtonContainer>
-
         {/* Mobile Menu */}
         <MobileMenu isOpen={isOpen}>
           <MobileNavLogo to="/" onClick={() => setIsOpen(false)}>
-            <Span>👨‍💻 Sandip.dev</Span>
+            <Span>👨‍💻 Portfolio</Span>
           </MobileNavLogo>
 
           {NAV_LINKS.map(({ label, href }) => (
