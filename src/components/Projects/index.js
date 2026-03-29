@@ -184,7 +184,7 @@ const FILTERS = [
   { label: "AI Games", value: "AI Game" },
 ];
 
-const Projects = ({ openModal, setOpenModal }) => {
+const Projects = () => {
   const [toggle, setToggle] = useState("all");
 
   const filtered =
@@ -219,8 +219,6 @@ const Projects = ({ openModal, setOpenModal }) => {
             <ProjectCard
               key={project.id}
               project={project}
-              openModal={openModal}
-              setOpenModal={setOpenModal}
             />
           ))}
         </CardContainer>

@@ -215,6 +215,34 @@ export const education = [
 
 export const projects = [
   {
+    id: 98,
+    title: "KIITGO – Smart Bus Service Management System",
+    date: "Nov 2025",
+    description:
+      "A full-stack, responsive web application designed for students and faculty of KIIT University to easily find, track, and manage campus bus transportation.",
+    image:
+      "https://github.com/Sandip4083/KiitGo-Transport-System/blob/main/src/KIITGO_logo.png?raw=true",
+    tags: ["HTML", "CSS", "JS", "React"],
+    category: "web app",
+    isLogo: true,
+    About: "https://sandip4083.github.io/KiitGo-Transport-System/",
+    Live: "https://kiit-go-transport-system.vercel.app/",
+  },
+  {
+    id: 99,
+    title: "SilentPing",
+    date: "Nov 2025",
+    description:
+      "SilentPing is a fast and secure anonymous feedback platform built with Next.js. It allows users to register, receive a unique link, and accept anonymous messages smoothly and securely. It also supports shutting down the message acceptance temporarily.",
+    image:
+      "https://github.com/Sandip4083/silentping-app/blob/main/src/assets/SilentPing_logo.png?raw=true",
+    tags: ["HTML", "CSS", "JS","TypeScript"],
+    category: "web app",
+    isLogo: true,
+    About: "https://sandip4083.github.io/silentping-app/",
+    Live: "https://silentping-app.vercel.app/",
+  },
+  {
     id: 100,
     title: "KIDS LEARNING PORTAL",
     date: "Nov 2024",
@@ -222,9 +250,11 @@ export const projects = [
       "Developed an interactive web portal for kids using HTML5, CSS3, and JavaScript. Integrated educational games, quizzes, and activities to promote fun-based learning. Ensured a responsive, colorful, and user-friendly design tailored for children.",
     image:
       "https://github.com/user-attachments/assets/0c963a81-8ccc-4e8f-98e4-b6c7354fa4e7",
-    tags: ["HTML5", "CSS3", "JavaScript"],
+    tags: ["HTML", "CSS", "JavaScript"],
     category: "web app",
-    webapp: "https://sandip4083.github.io/kids_learning_portal/",
+    //isLogo: true,
+    About: "https://github.com/Sandip4083/kids_learning_portal#readme",
+    Live: "https://sandip4083.github.io/kids_learning_portal/",
   },
   {
     id: 101,
@@ -235,12 +265,12 @@ export const projects = [
     image: "https://sandip4083.github.io/smart-ordering-and-billing/image.png",
     tags: ["PHP", "HTML", "CSS", "MySQL"],
     category: "web app",
-    github: "https://sandip4083.github.io/smart-ordering-and-billing/",
-    //webapp: "https://sandip4083.github.io/smart-ordering-and-billing/",
+    //isLogo: true,
+    About: "https://github.com/Sandip4083/smart-ordering-and-billing#readme",
   },
   {
     id: 102,
-    title: "DIABETES_CARE_AI",
+    title: "DIABETES CARE AI",
     date: "May 2025",
     description:
       "Built a machine learning model for diabetic analysis using Python and Scikit-learn. Applied data preprocessing, exploratory analysis, and classification techniques to predict diabetes risk with improved accuracy.",
@@ -248,12 +278,13 @@ export const projects = [
       "https://github.com/Sandip4083/DiabetesCare-AI/blob/main/image.png?raw=true",
     tags: ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
     category: "Machine Learning",
-    github: "https://sandip4083.github.io/DiabetesCare-AI/",
-    webapp: "https://diabetescare-ai.onrender.com",
+    //isLogo: true,
+    About: "https://github.com/Sandip4083/DiabetesCare-AI#readme",
+    Live: "https://diabetescare-ai.onrender.com",
   },
   {
     id: 103,
-    title: "TicTacToe-AI",
+    title: "TicTacToe AI",
     date: "2025",
     description:
       "Developed a Tic Tac Toe game in Python using Pygame, featuring an AI opponent powered by the Minimax algorithm with adjustable difficulty levels.",
@@ -261,35 +292,36 @@ export const projects = [
       "https://github.com/Sandip4083/TicTacToe-AI/blob/main/image-1.png?raw=true",
     tags: ["Python", "Pygame", "AI", "Minimax"],
     category: "AI Game",
-    github: "https://sandip4083.github.io/TicTacToe-AI/",
-    //webapp: "https://sandip4083.github.io/TicTacToe-AI/",
+    isLogo: true,
+    About: "https://github.com/Sandip4083/TicTacToe-AI#readme",
   },
   {
     id: 104,
-    title: "Snake-AI",
+    title: "Snake AI",
     date: "2025",
     description:
-      "Built a Python-based Snake Game with Streamlit, featuring AI pathfinding (BFS, DFS, A, Greedy) and real-time score tracking.",
+      "Built a Python-based Snake Game with Streamlit, featuring AI pathfinding (BFS, DFS, A*, Greedy) and real-time score tracking.",
     image:
       "https://github.com/user-attachments/assets/fc5f25eb-cb77-4b16-9f71-2e7f8d7443eb",
     tags: ["Python", "Streamlit", "AI", "Pathfinding", "Game Development"],
     category: "AI Game",
-    github: "https://sandip4083.github.io/snake-ai/",
-    webapp: "https://snake-ai-w4ta.onrender.com",
+    isLogo: true,
+    About: "https://github.com/Sandip4083/snake-ai#readme",
+    Live: "https://snake-ai-w4ta.onrender.com",
   },
-
   {
     id: 105,
     title: "CurroX - Currency Converter",
     date: "2025",
     description:
-      "A beautiful, modern, and feature-rich currency converter built with Flutter.Convert between 160+ world currencies with real-time exchange rates!",
+      "A beautiful, modern, and feature-rich currency converter built with Flutter. Convert between 160+ world currencies with real-time exchange rates!",
     image:
       "https://github.com/user-attachments/assets/8d2a4b87-b73d-440e-aaf9-6d5652228ce8",
     tags: ["Flutter", "Dart", "SharedPreferences"],
     category: "mobile app",
-    github: "https://sandip4083.github.io/CurroX_App/",
-    webapp: "https://sandip4083.github.io/CurroX_web/",
+    isLogo: true,
+    About: "https://sandip4083.github.io/CurroX_App/",
+    Live: "https://sandip4083.github.io/CurroX_web/",
   },
   {
     id: 106,
@@ -301,7 +333,7 @@ export const projects = [
       "https://github.com/user-attachments/assets/fe7e6ac7-7e83-4155-8b90-11a5a1d625f2",
     tags: ["Flutter", "Dart", "Local Notifications", "SharedPreferences"],
     category: "mobile app",
-    github: "https://sandip4083.github.io/RemindGo_App/",
-    //webapp: "https://sandip4083.github.io/RemindGo_App/",
+    isLogo: true,
+    About: "https://github.com/Sandip4083/RemindGo_App#readme",
   },
 ];

@@ -9,7 +9,6 @@ import Experience from "./components/Experience";
 import Footer from "./components/Footer";
 import HeroSection from "./components/HeroSection";
 import Navbar from "./components/Navbar";
-import ProjectDetails from "./components/ProjectDetails";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import { darkTheme, lightTheme } from "./utils/Themes.js";
@@ -81,7 +80,6 @@ const BackToTop = styled.button`
 
 function App() {
   const [darkMode] = useState(true);
-  const [openModal, setOpenModal] = useState({ state: false, project: null });
   const [showTop, setShowTop] = useState(false);
 
   useEffect(() => {
@@ -106,16 +104,13 @@ function App() {
             <Skills />
             <Experience />
           </Wrapper>
-          <Projects openModal={openModal} setOpenModal={setOpenModal} />
+          <Projects />
           <Wrapper>
             <Education />
             <Certificates />
             <Contact />
           </Wrapper>
           <Footer />
-          {openModal.state && (
-            <ProjectDetails openModal={openModal} setOpenModal={setOpenModal} />
-          )}
         </Body>
 
         {showTop && (
