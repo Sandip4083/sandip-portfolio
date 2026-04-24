@@ -1,4 +1,5 @@
 import KIITLogo from "../images/KIIT-logo.png";
+import SmartLogo from "../images/smart.png";
 
 export const Bio = {
   name: "Sandip Kumar Sah",
@@ -28,23 +29,19 @@ export const skills = [
       },
       {
         name: "CSS",
-        image:
-          "https://cdn-icons-png.flaticon.com/128/919/919826.png",
+        image: "https://cdn-icons-png.flaticon.com/128/919/919826.png",
       },
       {
         name: "JavaScript",
-        image:
-          "https://www.svgrepo.com/show/303206/javascript-logo.svg",
+        image: "https://www.svgrepo.com/show/303206/javascript-logo.svg",
       },
       {
         name: "TypeScript",
-        image:
-          "https://www.svgrepo.com/show/439022/typescript.svg",
+        image: "https://www.svgrepo.com/show/439022/typescript.svg",
       },
       {
         name: "Flutter",
-        image:
-          "https://www.svgrepo.com/show/373604/flutter.svg",
+        image: "https://www.svgrepo.com/show/373604/flutter.svg",
       },
     ],
   },
@@ -99,8 +96,7 @@ export const skills = [
       },
       {
         name: "VS Code",
-        image:
-          "https://code.visualstudio.com/assets/branding/code-stable.png",
+        image: "https://code.visualstudio.com/assets/branding/code-stable.png",
       },
     ],
   },
@@ -210,7 +206,8 @@ export const education = [
   {
     id: 0,
     img: KIITLogo,
-    school: "Kalinga Institute of Industrial Technology[KiiT], Bhubaneswar, Odisha India",
+    school:
+      "Kalinga Institute of Industrial Technology[KiiT], Bhubaneswar, Odisha India",
     date: "2022 - 2026",
     cgpa: "8.84/10 (88.4%)",
     desc: "I have completed my Bachelor's degree in Computer Science and Engineering from Kalinga Institute of Industrial Technology, Bhubaneswar. My academic background includes Data Structures, Algorithms, Object-Oriented Programming, Database Management Systems, Operating Systems, and Computer Networks.",
@@ -235,17 +232,16 @@ export const projects = [
   },
   {
     id: 99,
-    title: "SilentPing",
-    date: "Nov 2025",
+    title: "SMART ORDER AND BILLING PORTAL",
+    date: "Mar 2025",
     description:
-      "SilentPing is a fast and secure anonymous feedback platform built with Next.js. It allows users to register, receive a unique link, and accept anonymous messages smoothly and securely. It also supports shutting down the message acceptance temporarily.",
-    image:
-      "https://github.com/Sandip4083/silentping-app/blob/main/src/assets/SilentPing_logo.png?raw=true",
-    tags: ["HTML", "CSS", "JS","TypeScript"],
+      "Built a web-based order and billing system using HTML, CSS, React and JS. Enabled users to place orders, generate invoices, and manage inventory seamlessly. Implemented secure login and dynamic billing with real-time data updates.",
+    image: SmartLogo,
+    tags: ["HTML", "CSS", "React", "JS"],
     category: "web app",
     isLogo: true,
-    About: "https://sandip4083.github.io/silentping-app/",
-    Live: "https://silentping-app.vercel.app/",
+    About: "https://github.com/Sandip4083/smart-ordering-and-billing#readme",
+    Live: "https://smart-order-and-billing-portal.vercel.app/",
   },
   {
     id: 100,
@@ -263,15 +259,17 @@ export const projects = [
   },
   {
     id: 101,
-    title: "SMART ORDER AND BILLING PORTAL",
-    date: "Mar 2025",
+    title: "SilentPing",
+    date: "Nov 2025",
     description:
-      "Built a web-based order and billing system using PHP, HTML, CSS, and MySQL. Enabled users to place orders, generate invoices, and manage inventory seamlessly. Implemented secure login and dynamic billing with real-time data updates.",
-    image: "https://sandip4083.github.io/smart-ordering-and-billing/image.png",
-    tags: ["PHP", "HTML", "CSS", "MySQL"],
+      "SilentPing is a fast and secure anonymous feedback platform built with Next.js. It allows users to register, receive a unique link, and accept anonymous messages smoothly and securely. It also supports shutting down the message acceptance temporarily.",
+    image:
+      "https://github.com/Sandip4083/silentping-app/blob/main/src/assets/SilentPing_logo.png?raw=true",
+    tags: ["HTML", "CSS", "JS", "TypeScript"],
     category: "web app",
-    //isLogo: true,
-    About: "https://github.com/Sandip4083/smart-ordering-and-billing#readme",
+    isLogo: true,
+    About: "https://sandip4083.github.io/silentping-app/",
+    Live: "https://silentping-app.vercel.app/",
   },
   {
     id: 102,
