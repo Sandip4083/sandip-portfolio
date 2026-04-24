@@ -29,17 +29,22 @@ export const skills = [
       {
         name: "CSS",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1452px-CSS3_logo_and_wordmark.svg.png",
+          "https://cdn-icons-png.flaticon.com/128/919/919826.png",
       },
       {
         name: "JavaScript",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/800px-JavaScript-logo.png",
+          "https://www.svgrepo.com/show/303206/javascript-logo.svg",
+      },
+      {
+        name: "TypeScript",
+        image:
+          "https://www.svgrepo.com/show/439022/typescript.svg",
       },
       {
         name: "Flutter",
         image:
-          "https://cdn-images-1.medium.com/max/1200/1*5-aoK8IBmXve5whBQM90GA.png",
+          "https://www.svgrepo.com/show/373604/flutter.svg",
       },
     ],
   },
@@ -95,7 +100,7 @@ export const skills = [
       {
         name: "VS Code",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png?20210804221519",
+          "https://code.visualstudio.com/assets/branding/code-stable.png",
       },
     ],
   },
@@ -205,10 +210,10 @@ export const education = [
   {
     id: 0,
     img: KIITLogo,
-    school: "Kalinga Institute of Industrial Technology[KiiT], Bhubaneswar",
-    date: "Oct 2022 - May 2026",
-    grade: "8.74 CGPA",
-    desc: "I am currently pursuing a Bachelor's degree in Computer Science and Engineering at Kalinga Institute of Industrial Technology, Bhubaneswar. I have taken courses in Data Structures, Algorithms, Object-Oriented Programming, Database Management Systems, Operating Systems, and Computer Networks.",
+    school: "Kalinga Institute of Industrial Technology[KiiT], Bhubaneswar, Odisha India",
+    date: "2022 - 2026",
+    cgpa: "8.84/10 (88.4%)",
+    desc: "I have completed my Bachelor's degree in Computer Science and Engineering from Kalinga Institute of Industrial Technology, Bhubaneswar. My academic background includes Data Structures, Algorithms, Object-Oriented Programming, Database Management Systems, Operating Systems, and Computer Networks.",
     degree: "Bachelor of Technology - B.Tech, Computer Science and Engineering",
   },
 ];
