@@ -1,5 +1,6 @@
 import KIITLogo from "../images/KIIT-logo.png";
 import SmartLogo from "../images/smart.png";
+import KidsLogo from "../images/kids.png";
 
 export const Bio = {
   name: "Sandip Kumar Sah",
@@ -249,13 +250,12 @@ export const projects = [
     date: "Nov 2024",
     description:
       "Developed an interactive web portal for kids using HTML5, CSS3, and JavaScript. Integrated educational games, quizzes, and activities to promote fun-based learning. Ensured a responsive, colorful, and user-friendly design tailored for children.",
-    image:
-      "https://github.com/user-attachments/assets/0c963a81-8ccc-4e8f-98e4-b6c7354fa4e7",
+    image: KidsLogo,
     tags: ["HTML", "CSS", "JavaScript"],
     category: "web app",
-    //isLogo: true,
+    isLogo: true,
     About: "https://github.com/Sandip4083/kids_learning_portal#readme",
-    Live: "https://sandip4083.github.io/kids_learning_portal/",
+    Live: "https://kids-learning-portal-xi.vercel.app/",
   },
   {
     id: 101,
